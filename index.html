@@ -160,20 +160,60 @@ nav.desk{display:none}
 .hero .lead{max-width:36ch}
 .hero-cta{display:flex;flex-direction:column;gap:11px;margin:22px 0 8px}
 .hero-note{font-size:12.5px;color:var(--ink-3);display:flex;align-items:center;gap:7px}
-.hero-art{position:relative;margin:30px -8px 0;padding-bottom:8px}
+.hero-art{position:relative;margin:34px 16px 34px;padding-bottom:6px}
 .hero-bird{
   position:absolute;right:-6px;top:-16px;width:78px;opacity:.14;
   animation:float 7s ease-in-out infinite;
 }
 @keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
 
-/* phone mock */
-.phone{
-  width:196px;margin:0 auto;background:var(--graphite);border-radius:34px;padding:8px;
-  box-shadow:var(--sh-3);position:relative;
+/* hero card */
+.hcard{
+  background:var(--white);border-radius:26px;padding:22px 18px 24px;
+  box-shadow:var(--sh-3);position:relative;max-width:400px;margin:0 auto;
+  transform:rotate(-1.4deg);
+  animation:cardIn .9s cubic-bezier(.2,.7,.3,1) both;
 }
-.phone::before{content:"";position:absolute;top:15px;left:50%;transform:translateX(-50%);width:56px;height:5px;background:#000;border-radius:99px;z-index:3}
-.phone video,.phone img{border-radius:27px;width:100%;aspect-ratio:9/17;object-fit:cover;background:#111}
+@keyframes cardIn{from{opacity:0;transform:rotate(-5deg) translateY(26px)}to{opacity:1;transform:rotate(-1.4deg) translateY(0)}}
+.hcard-tag{
+  display:inline-block;background:var(--sand-4);color:var(--sand);border-radius:var(--r-pill);
+  padding:6px 13px;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;
+}
+.hcard-word{display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
+.hm{
+  border-radius:13px;padding:12px 11px 9px;text-align:center;color:#fff;
+  font-family:"Oswald",sans-serif;font-weight:600;font-size:clamp(17px,4.6vw,23px);line-height:1;
+  animation:pop .5s cubic-bezier(.2,.9,.3,1.3) both;
+}
+.hm small{display:block;font-family:"Manrope",sans-serif;font-size:8.5px;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;margin-top:6px;opacity:.72}
+.hm-p{background:var(--coral);animation-delay:.35s}
+.hm-r{background:var(--graphite);animation-delay:.5s}
+.hm-s{background:var(--sand)}
+.hcard-word .hm-s:nth-of-type(3){animation-delay:.65s}
+.hcard-word .hm-s:nth-of-type(4){animation-delay:.8s}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.86)}to{opacity:1;transform:none}}
+.hcard-res{
+  text-align:center;margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);
+  animation:pop .6s ease .95s both;
+}
+.hcard-res b{display:block;font-family:"Oswald",sans-serif;font-weight:600;font-size:clamp(18px,5vw,24px);color:var(--graphite)}
+.hcard-res span{font-size:14px;color:var(--ink-2);display:block;margin-top:4px}
+.hcard-badge{
+  position:absolute;left:-14px;bottom:-22px;width:76px;height:76px;
+  background:var(--white);border-radius:50%;box-shadow:var(--sh-2);
+  display:flex;align-items:center;justify-content:center;
+  animation:pop .6s ease 1.15s both;
+}
+.hcard-badge svg{position:absolute;inset:0;width:76px;height:76px;transform:rotate(-90deg)}
+.hcard-badge .hb-fg{stroke-dasharray:207;stroke-dashoffset:207;animation:hbfill 1.5s cubic-bezier(.2,.7,.3,1) 1.3s forwards}
+@keyframes hbfill{to{stroke-dashoffset:29}}
+.hcard-badge i{font-family:"Oswald",sans-serif;font-style:normal;font-size:19px;font-weight:700;color:var(--graphite)}
+@media (prefers-reduced-motion:reduce){
+  .hcard,.hm,.hcard-res,.hcard-badge{animation:none;opacity:1;transform:none}
+  .hcard{transform:rotate(-1.4deg)}
+  .hcard-badge .hb-fg{stroke-dashoffset:29;animation:none}
+}
 
 .hero-strip{
   display:flex;gap:9px;margin-top:22px;overflow-x:auto;padding:2px 2px 12px;
@@ -449,6 +489,209 @@ footer a{color:var(--sand-2);text-decoration:none}
 footer .fl{display:flex;justify-content:center;gap:18px;margin-bottom:14px;flex-wrap:wrap}
 footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
 
+/* ============ CARD MOTION ============ */
+.card,.shot,.feat-item,.plan,.afx-item,.quote,.oval,.vid,.rev,.stat-ring,.bars,.komp,.anat,.quiz{
+  transition:transform .34s cubic-bezier(.2,.7,.3,1),box-shadow .34s cubic-bezier(.2,.7,.3,1);
+  will-change:transform;
+}
+@media (hover:hover){
+  .card:hover,.feat-item:hover,.komp:hover,.anat:hover{transform:translateY(-5px);box-shadow:var(--sh-2)}
+  .shot:hover,.vid:hover,.rev:hover{transform:translateY(-7px);box-shadow:var(--sh-3)}
+  .plan:hover{transform:translateY(-7px) scale(1.012);box-shadow:var(--sh-3)}
+  .afx-item:hover{transform:translateX(4px);box-shadow:var(--sh-2)}
+  .quote:hover{transform:translateX(5px)}
+  .oval:hover{transform:translateY(-4px) scale(1.03)}
+  .shot:hover img{transform:scale(1.035)}
+}
+.shot img{transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+.card:active,.feat-item:active,.plan:active,.shot:active{transform:scale(.985)}
+.plan.best{position:relative}
+.plan.best::after{
+  content:"";position:absolute;inset:-1.5px;border-radius:var(--r-lg);pointer-events:none;
+  background:linear-gradient(115deg,transparent 30%,rgba(240,98,92,.55),transparent 70%);
+  background-size:280% 100%;animation:shine 5.5s linear infinite;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;padding:1.5px;
+}
+@keyframes shine{0%{background-position:200% 0}100%{background-position:-80% 0}}
+
+/* staggered reveal */
+.js .stag>*{opacity:0;transform:translateY(22px);transition:opacity .62s cubic-bezier(.2,.7,.3,1),transform .62s cubic-bezier(.2,.7,.3,1)}
+.js .stag.in>*{opacity:1;transform:none}
+.js .stag.in>*:nth-child(1){transition-delay:.02s}
+.js .stag.in>*:nth-child(2){transition-delay:.09s}
+.js .stag.in>*:nth-child(3){transition-delay:.16s}
+.js .stag.in>*:nth-child(4){transition-delay:.23s}
+.js .stag.in>*:nth-child(5){transition-delay:.3s}
+.js .stag.in>*:nth-child(6){transition-delay:.37s}
+.js .stag.in>*:nth-child(7){transition-delay:.44s}
+.js .stag.in>*:nth-child(8){transition-delay:.51s}
+@media (prefers-reduced-motion:reduce){
+  .js .stag>*{opacity:1;transform:none}
+  .plan.best::after{animation:none}
+  .card,.shot,.feat-item,.plan,.afx-item{transition:none}
+}
+
+/* ============ TREE ============ */
+.tree-box{background:var(--white);border-radius:var(--r-lg);padding:20px 12px 16px;box-shadow:var(--sh-1)}
+.tree-box svg{width:100%;height:auto;display:block;overflow:visible}
+.tree-box .link{fill:none;stroke:var(--line-2);stroke-width:1.6;stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset .9s ease}
+.tree-box.on .link{stroke-dashoffset:0}
+.tree-box .node{opacity:0;transform:translateY(10px);transform-box:fill-box;transform-origin:center;transition:opacity .5s ease,transform .5s cubic-bezier(.2,.7,.3,1)}
+.tree-box.on .node{opacity:1;transform:none}
+.tree-box .nw{font-family:"Oswald",sans-serif;font-weight:600;font-size:15px}
+.tree-box .nt{font-family:"Manrope",sans-serif;font-weight:600;font-size:9.5px}
+.tree-cap{text-align:center;font-size:13.5px;color:var(--ink-3);margin:12px 0 0}
+@media (prefers-reduced-motion:reduce){.tree-box .link{stroke-dashoffset:0}.tree-box .node{opacity:1;transform:none}}
+
+/* ============ GENDER MAP ============ */
+.gm{background:var(--white);border-radius:var(--r-lg);padding:22px 18px;box-shadow:var(--sh-1)}
+.gm-legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:18px;padding-bottom:16px;border-bottom:1px dashed var(--line)}
+.gm-leg{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:800}
+.gm-dot{width:13px;height:13px;border-radius:4px;flex:0 0 auto}
+.d-die{background:var(--coral)}.d-der{background:var(--graphite)}.d-das{background:var(--sand)}
+.gm-grid{display:flex;flex-wrap:wrap;gap:7px}
+.gm-chip{
+  font-family:"Oswald",sans-serif;font-weight:600;font-size:15px;color:#fff;
+  border-radius:11px;padding:9px 13px 8px;line-height:1;position:relative;cursor:default;
+  transition:transform .22s ease;
+}
+.gm-chip small{display:block;font-family:"Manrope",sans-serif;font-size:9px;font-weight:800;letter-spacing:.1em;opacity:.72;margin-top:5px}
+.gm-chip:hover{transform:translateY(-3px) scale(1.05)}
+.g-die{background:var(--coral)}.g-der{background:var(--graphite)}.g-das{background:var(--sand)}
+.gm-note{margin:16px 0 0;font-size:13.5px;color:var(--ink-2);line-height:1.55}
+
+/* ============ VS ============ */
+.vs{display:grid;gap:12px}
+.vs-col{border-radius:var(--r-lg);padding:22px 18px}
+.vs-a{background:#EAE6DF;border:1.5px dashed var(--line-2)}
+.vs-b{background:var(--graphite);color:#EDE9E3}
+.vs-t{font-family:"Oswald",sans-serif;text-transform:uppercase;font-size:15px;letter-spacing:.08em;margin:0 0 4px}
+.vs-a .vs-t{color:var(--ink-3)}
+.vs-b .vs-t{color:var(--sand-2)}
+.vs-h{font-size:17px;font-weight:800;margin:0 0 16px}
+.vs-b .vs-h{color:#fff}
+.vs-flat{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.vs-flat i{
+  font-style:normal;background:#DAD4CA;color:#7F786D;border-radius:7px;
+  padding:7px 10px;font-size:12px;font-weight:700;
+}
+.vs-sys svg{width:100%;max-width:250px;height:auto;display:block;margin:0 auto 14px;overflow:visible}
+.vs-m{font-size:13.5px;margin:0;line-height:1.5}
+.vs-a .vs-m{color:var(--ink-2)}
+.vs-b .vs-m{color:#A29B90}
+.vs-big{font-family:"Oswald",sans-serif;font-size:30px;line-height:1;display:block;margin-bottom:5px}
+.vs-a .vs-big{color:var(--ink-3)}
+.vs-b .vs-big{color:var(--sand-2)}
+
+/* ============ KOMPOSITA ANIM ============ */
+.ka{background:var(--white);border-radius:var(--r-lg);padding:24px 16px;box-shadow:var(--sh-1);text-align:center;overflow:hidden}
+.ka-row{display:flex;justify-content:center;align-items:stretch;gap:9px;transition:gap .6s cubic-bezier(.66,0,.2,1);flex-wrap:nowrap}
+.ka.joined .ka-row{gap:0}
+.ka-seg{
+  border-radius:12px;padding:14px 9px 11px;transition:border-radius .6s ease,transform .6s cubic-bezier(.66,0,.2,1);
+  font-family:"Oswald",sans-serif;font-weight:600;font-size:clamp(15px,4.4vw,23px);line-height:1;color:#fff;
+}
+.ka-seg small{display:block;font-family:"Manrope",sans-serif;font-size:8.5px;font-weight:800;letter-spacing:.09em;margin-top:7px;opacity:.75;transition:opacity .4s}
+.ka.joined .ka-seg small{opacity:0}
+.ka-seg:nth-child(1){background:var(--sand-2)}
+.ka-seg:nth-child(2){background:var(--sand)}
+.ka-seg:nth-child(3){background:var(--graphite)}
+.ka.joined .ka-seg:nth-child(1){border-radius:12px 0 0 12px}
+.ka.joined .ka-seg:nth-child(2){border-radius:0}
+.ka.joined .ka-seg:nth-child(3){border-radius:0 12px 12px 0}
+.ka-res{margin-top:16px;min-height:64px}
+.ka-res .rw{font-family:"Oswald",sans-serif;font-size:clamp(17px,4.8vw,24px);font-weight:600;opacity:0;transform:translateY(8px);transition:.5s .35s}
+.ka.joined .ka-res .rw{opacity:1;transform:none}
+.ka-res .rt{font-size:13.5px;color:var(--ink-2);margin:6px 0 0;opacity:0;transition:.5s .5s}
+.ka.joined .ka-res .rt{opacity:1}
+.ka-arrow{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--sand);opacity:0;transition:.5s .7s}
+.ka.joined .ka-arrow{opacity:1}
+.ka-arrow span{animation:nudge 1.5s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(-6px)}}
+.ka-btn{margin-top:18px}
+@media (prefers-reduced-motion:reduce){.ka-arrow span{animation:none}}
+
+/* ============ LEVEL TRACK ============ */
+.lvltrack{background:var(--white);border-radius:var(--r-lg);padding:26px 18px 20px;box-shadow:var(--sh-1)}
+.lt-line{position:relative;height:4px;background:#EDE7DE;border-radius:99px;margin:0 16px 0}
+.lt-line i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--sand-2),var(--sand),var(--coral));transition:width 1.8s cubic-bezier(.2,.7,.3,1)}
+.lt-dots{display:flex;justify-content:space-between;margin-top:-11px}
+.lt-dot{display:flex;flex-direction:column;align-items:center;gap:8px;width:16.6%}
+.lt-dot b{
+  width:19px;height:19px;border-radius:50%;background:var(--white);border:3px solid #E0D8CD;
+  transition:border-color .4s ease,transform .4s ease;
+}
+.lt-dot.hit b{border-color:var(--sand);transform:scale(1.15)}
+.lt-dot:last-child.hit b{border-color:var(--coral)}
+.lt-dot span{font-family:"Oswald",sans-serif;font-size:14px;color:var(--ink-3);transition:color .4s}
+.lt-dot.hit span{color:var(--graphite)}
+.lt-cap{display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink-3);margin-top:16px;font-weight:700;letter-spacing:.04em}
+
+
+/* ============ SCRIBBLE (self-drawing annotation) ============ */
+.scr{position:relative;display:inline-block;white-space:nowrap}
+.scr svg{position:absolute;left:-3%;width:106%;height:auto;overflow:visible;pointer-events:none;z-index:0}
+.scr.u svg{bottom:-.30em}
+.scr.o svg{top:-.26em;height:1.62em}
+.scr>span{position:relative;z-index:1}
+.scr path{
+  fill:none;stroke:var(--coral);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;
+  transition:stroke-dashoffset 1.05s cubic-bezier(.35,.6,.25,1);
+}
+.scr path+path{opacity:.5;stroke-width:3.6;transition-delay:.2s}
+@media (prefers-reduced-motion:reduce){.scr path{transition:none;stroke-dashoffset:0!important}}
+
+/* ============ SCATTERED AFFIXES ============ */
+.scatter{
+  position:relative;height:clamp(330px,74vw,460px);overflow:hidden;
+  background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.scatter i{
+  position:absolute;font-family:"Oswald",sans-serif;font-style:normal;font-weight:700;
+  line-height:1;white-space:nowrap;user-select:none;will-change:transform;
+  transition:opacity .8s ease;opacity:0;
+}
+.scatter.on i{opacity:1}
+.scatter-mid{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  text-align:center;z-index:5;width:min(88%,440px);
+}
+.scatter-mid .d3{margin-bottom:10px}
+.scatter-mid p{margin:0;font-size:14.5px;color:var(--ink-2);
+  background:rgba(247,245,241,.82);border-radius:14px;padding:10px 14px;backdrop-filter:blur(3px)}
+
+/* ============ COUNTING PILE ============ */
+.pilebox{background:var(--white);border-radius:var(--r-lg);box-shadow:var(--sh-1);padding:26px 18px 14px;text-align:center;overflow:hidden}
+.pile-n{font-family:"Oswald",sans-serif;font-weight:700;font-size:clamp(52px,17vw,92px);line-height:.9;color:var(--graphite);font-variant-numeric:tabular-nums}
+.pile-n span{color:var(--coral)}
+.pile-l{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:10px 0 0}
+.pile{position:relative;height:190px;margin-top:6px}
+.pile i{
+  position:absolute;font-style:normal;font-family:"Oswald",sans-serif;font-weight:600;
+  font-size:clamp(12px,3.4vw,16px);color:#fff;border-radius:11px;padding:8px 11px 7px;line-height:1;
+  opacity:0;transform:translateY(-320px) rotate(0deg);
+  transition:transform .95s cubic-bezier(.28,1.42,.5,1),opacity .2s linear;
+  box-shadow:0 3px 8px rgba(35,33,32,.14);
+}
+.pile.on i{opacity:1;transform:var(--rest)}
+.pile .c1{background:var(--sand)}
+.pile .c2{background:var(--graphite)}
+.pile .c3{background:var(--coral)}
+.pile .c4{background:var(--sand-2);color:#5B4433}
+@media (prefers-reduced-motion:reduce){.pile i{transition:none;opacity:1;transform:var(--rest)}}
+
+/* ============ CONFETTI ============ */
+.conf{position:fixed;inset:0;pointer-events:none;z-index:200;overflow:hidden}
+.conf i{
+  position:absolute;display:block;width:9px;height:14px;border-radius:2px;
+  animation:fall var(--d,2.4s) cubic-bezier(.25,.6,.5,1) forwards;
+}
+@keyframes fall{
+  0%{transform:translate3d(0,0,0) rotate(0deg);opacity:1}
+  100%{transform:translate3d(var(--x,0px),110vh,0) rotate(var(--r,540deg));opacity:0}
+}
+
 /* ============ DESKTOP ============ */
 @media (min-width:760px){
   :root{--pad:34px}
@@ -459,8 +702,7 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
   nav.desk a:hover{color:var(--sand)}
   .hero{padding:44px 0 0}
   .hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:38px;align-items:center}
-  .hero-art{margin:0}
-  .phone{width:250px}
+  .hero-art{margin:0 20px 0 24px}
   .hero-cta{flex-direction:row}
   .hero-strip{justify-content:flex-start}
   .grid-2{grid-template-columns:1fr 1fr}
@@ -476,6 +718,13 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
   .sticky{display:none}
   .anat{padding:34px}
   .split{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+  .vs{grid-template-columns:1fr 1fr}
+  .tree-box{padding:30px}
+  .lt-dot span{font-size:16px}
+  .gm{padding:30px}
+  .ka{padding:36px 26px}
+  .pile{height:230px}
+  .scatter-mid p{font-size:16px}
   .stat-ring{padding:28px}
   .ring,.ring svg{width:130px;height:130px}
   .ring .val{font-size:34px}
@@ -517,7 +766,7 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
           <span class="chip"><b>340+</b> гайдов</span>
           <span class="chip">Вена · Telegram</span>
         </div>
-        <h1 class="d1">Немецкий<br>можно<br><span class="tan">не зубрить</span></h1>
+        <h1 class="d1">Немецкий<br>можно<br><span class="scr u tan"><span>не зубрить</span><svg viewBox="0 0 300 26" preserveAspectRatio="none" aria-hidden="true"><path d="M6,17 C58,7 138,4 208,10 C250,13.5 281,18 294,14"/><path d="M14,22 C72,14 152,11 222,16 C258,18.5 283,21 292,19"/></svg></span></h1>
         <p class="lead">Половину незнакомых слов в немецком не надо учить. Их надо уметь <strong>разобрать на детали</strong>. Сегодня разбираем приставки и суффиксы — механизм, который превращает 500 знакомых корней в три тысячи понятных слов.</p>
         <div class="hero-cta">
           <a class="btn btn-coral" href="#theory">Разобраться за 12 минут</a>
@@ -527,12 +776,29 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
       </div>
       <div class="hero-art">
         <img class="hero-bird" src="assets/logo.png" alt="">
-        <div class="phone">
-          <video src="assets/video/grammar.mp4" autoplay muted loop playsinline poster="assets/platform/p3-guide.jpg"></video>
+        <div class="hcard">
+          <span class="hcard-tag">Разбор за 3 секунды</span>
+          <div class="hcard-word">
+            <span class="hm hm-p">un<small>приставка</small></span>
+            <span class="hm hm-r">freund<small>корень</small></span>
+            <span class="hm hm-s">lich<small>суффикс</small></span>
+            <span class="hm hm-s">keit<small>суффикс</small></span>
+          </div>
+          <div class="hcard-res">
+            <b>die Unfreundlichkeit</b>
+            <span>недружелюбность</span>
+          </div>
+          <div class="hcard-badge">
+            <svg viewBox="0 0 76 76" aria-hidden="true">
+              <circle cx="38" cy="38" r="33" fill="none" stroke="#EDE7DE" stroke-width="7"/>
+              <circle class="hb-fg" cx="38" cy="38" r="33" fill="none" stroke="#F0625C" stroke-width="7" stroke-linecap="round"/>
+            </svg>
+            <i>86%</i>
+          </div>
         </div>
       </div>
     </div>
-    <div class="hero-strip">
+    <div class="hero-strip stag rv">
       <div class="oval"><div class="n" data-count="340" data-suffix="+">0</div><div class="l">гайдов</div></div>
       <div class="oval"><div class="n" data-count="7500" data-suffix="+">0</div><div class="l">слов с озвучкой</div></div>
       <div class="oval"><div class="n" data-count="100" data-suffix="+">0</div><div class="l">студентов</div></div>
@@ -555,7 +821,7 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
     <h2 class="d2 wht rv">Дело не в том,<br>что вы <span class="tan">неспособный</span></h2>
     <p class="lead rv" style="max-width:52ch;margin-top:16px">Я живу в Вене. И каждый день читаю одно и то же — в чатах, в комментариях, в личке. Не от лентяев. От людей, которые пашут в три смены, тащат детей и всё равно садятся за учебник.</p>
 
-    <div class="quotes rv" style="margin:26px 0">
+    <div class="quotes rv stag" style="margin:26px 0">
       <div class="quote"><p>«Я почти всё понимаю, что говорят. А когда пытаюсь сказать — в голове каша».</p><span class="who">из комментариев</span></div>
       <div class="quote"><p>«Зная кучу слов, перевод выходит как Wörter Salat. А в обратную сторону вообще фиг построишь».</p><span class="who">из комментариев</span></div>
       <div class="quote"><p>«Артикли. Мой личный ужасный ужас».</p><span class="who">из комментариев</span></div>
@@ -591,9 +857,68 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
     </div>
 
     <p class="hit rv" style="margin-top:26px">Вы не учили это слово. Вы его прочитали.</p>
-    <p class="lead rv">Ровно так же собираются десятки тысяч немецких слов. Не сотни — десятки тысяч. И деталей, из которых их собирают, до неприличия мало.</p>
+    <p class="lead rv">И теперь смотрите, что даёт один-единственный корень, который вы уже знаете:</p>
 
-    <div class="grid grid-2 rv" style="margin-top:24px">
+    <div class="tree-box rv" id="tree" style="margin-top:18px">
+      <svg viewBox="0 0 340 396" role="img" aria-label="Дерево словообразования: от корня Freund образуются freundlich, unfreundlich, die Freundschaft, die Freundlichkeit, der Freundeskreis и befreundet">
+        <g fill="none">
+          <path class="link" d="M170,70 C170,102 82,100 82,132"/>
+          <path class="link" d="M170,70 C170,102 258,100 258,132"/>
+          <path class="link" d="M170,70 C170,150 82,172 82,224"/>
+          <path class="link" d="M170,70 C170,150 258,172 258,224"/>
+          <path class="link" d="M170,70 C170,210 82,244 82,316"/>
+          <path class="link" d="M170,70 C170,210 258,244 258,316"/>
+        </g>
+
+        <g class="node">
+          <rect x="90" y="12" width="160" height="58" rx="18" fill="#232120"/>
+          <text class="nw" x="170" y="38" fill="#fff" text-anchor="middle">Freund</text>
+          <text class="nt" x="170" y="54" fill="#C89A76" text-anchor="middle">ДРУГ · КОРЕНЬ · A1</text>
+        </g>
+
+        <g class="node" style="transition-delay:.15s">
+          <rect x="6" y="132" width="152" height="62" rx="16" fill="#F0DDCB"/>
+          <text class="nw" x="82" y="157" fill="#22201E" text-anchor="middle">freundlich</text>
+          <text class="nt" x="82" y="174" fill="#8C847A" text-anchor="middle">ДРУЖЕЛЮБНЫЙ</text>
+          <text class="nt" x="82" y="186" fill="#C89A76" text-anchor="middle">+ ·LICH</text>
+        </g>
+        <g class="node" style="transition-delay:.24s">
+          <rect x="182" y="132" width="152" height="62" rx="16" fill="#FBE3E2"/>
+          <text class="nw" x="258" y="157" fill="#22201E" text-anchor="middle">unfreundlich</text>
+          <text class="nt" x="258" y="174" fill="#8C847A" text-anchor="middle">НЕДРУЖЕЛЮБНЫЙ</text>
+          <text class="nt" x="258" y="186" fill="#DC4A44" text-anchor="middle">UN· +</text>
+        </g>
+        <g class="node" style="transition-delay:.33s">
+          <rect x="6" y="224" width="152" height="62" rx="16" fill="#EFEDE8"/>
+          <text class="nw" x="82" y="249" fill="#22201E" text-anchor="middle">die Freundschaft</text>
+          <text class="nt" x="82" y="266" fill="#8C847A" text-anchor="middle">ДРУЖБА</text>
+          <text class="nt" x="82" y="278" fill="#C89A76" text-anchor="middle">+ ·SCHAFT</text>
+        </g>
+        <g class="node" style="transition-delay:.42s">
+          <rect x="182" y="224" width="152" height="62" rx="16" fill="#EFEDE8"/>
+          <text class="nw" x="258" y="249" fill="#22201E" text-anchor="middle">die Freundlichkeit</text>
+          <text class="nt" x="258" y="266" fill="#8C847A" text-anchor="middle">ПРИВЕТЛИВОСТЬ</text>
+          <text class="nt" x="258" y="278" fill="#C89A76" text-anchor="middle">+ ·LICH ·KEIT</text>
+        </g>
+        <g class="node" style="transition-delay:.51s">
+          <rect x="6" y="316" width="152" height="62" rx="16" fill="#EFEDE8"/>
+          <text class="nw" x="82" y="341" fill="#22201E" text-anchor="middle">der Freundeskreis</text>
+          <text class="nt" x="82" y="358" fill="#8C847A" text-anchor="middle">КРУГ ДРУЗЕЙ</text>
+          <text class="nt" x="82" y="370" fill="#C89A76" text-anchor="middle">+ KREIS</text>
+        </g>
+        <g class="node" style="transition-delay:.6s">
+          <rect x="182" y="316" width="152" height="62" rx="16" fill="#F0DDCB"/>
+          <text class="nw" x="258" y="341" fill="#22201E" text-anchor="middle">befreundet</text>
+          <text class="nt" x="258" y="358" fill="#8C847A" text-anchor="middle">В ДРУЖБЕ, ЗНАКОМЫ</text>
+          <text class="nt" x="258" y="370" fill="#C89A76" text-anchor="middle">BE· + ·ET</text>
+        </g>
+      </svg>
+      <p class="tree-cap">Один корень. Шесть слов. Ноль зубрёжки.</p>
+    </div>
+
+    <p class="lead rv" style="margin-top:20px">Ровно так же собираются десятки тысяч немецких слов. Не сотни — десятки тысяч. И деталей, из которых их собирают, до неприличия мало.</p>
+
+    <div class="grid grid-2 rv stag" style="margin-top:24px">
       <div class="card">
         <h3>Четыре способа собрать слово</h3>
         <p class="lead" style="font-size:15px;margin:0">В немецком их всего четыре, и три из них вы уже интуитивно знаете:</p>
@@ -611,10 +936,55 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
   </div>
 </section>
 
+<!-- ================= GENDER MAP ================= -->
+<section class="sec-sand">
+  <div class="wrap">
+    <p class="eyebrow dark rv">02 · Артикли</p>
+    <h2 class="d2 rv">Артикль спрятан<br>в <span class="scr u tan"><span>конце слова</span><svg viewBox="0 0 300 26" preserveAspectRatio="none" aria-hidden="true"><path d="M6,17 C58,7 138,4 208,10 C250,13.5 281,18 294,14"/><path d="M14,22 C72,14 152,11 222,16 C258,18.5 283,21 292,19"/></svg></span></h2>
+    <p class="lead rv" style="max-width:46ch;margin-top:14px">«Артикли — мой личный ужасный ужас» — самый частый комментарий, который я вижу. Так вот, к половине существительных артикль вообще не надо угадывать. Он написан прямо в слове.</p>
+
+    <div class="gm rv" style="margin-top:20px">
+      <div class="gm-legend">
+        <span class="gm-leg"><i class="gm-dot d-die"></i>die</span>
+        <span class="gm-leg"><i class="gm-dot d-der"></i>der</span>
+        <span class="gm-leg"><i class="gm-dot d-das"></i>das</span>
+      </div>
+      <div class="gm-grid stag rv">
+        <span class="gm-chip g-die">-ung<small>die Wohnung</small></span>
+        <span class="gm-chip g-die">-heit<small>die Freiheit</small></span>
+        <span class="gm-chip g-die">-keit<small>die Möglichkeit</small></span>
+        <span class="gm-chip g-die">-schaft<small>die Wirtschaft</small></span>
+        <span class="gm-chip g-die">-ion<small>die Situation</small></span>
+        <span class="gm-chip g-die">-tät<small>die Universität</small></span>
+        <span class="gm-chip g-die">-ei<small>die Bäckerei</small></span>
+        <span class="gm-chip g-die">-ur<small>die Kultur</small></span>
+      </div>
+      <div class="gm-grid" style="margin-top:7px">
+        <span class="gm-chip g-der">-er<small>der Lehrer</small></span>
+        <span class="gm-chip g-der">-ling<small>der Lehrling</small></span>
+        <span class="gm-chip g-der">-ismus<small>der Tourismus</small></span>
+        <span class="gm-chip g-der">-or<small>der Motor</small></span>
+        <span class="gm-chip g-der">-ant<small>der Praktikant</small></span>
+      </div>
+      <div class="gm-grid" style="margin-top:7px">
+        <span class="gm-chip g-das">-chen<small>das Brötchen</small></span>
+        <span class="gm-chip g-das">-lein<small>das Büchlein</small></span>
+        <span class="gm-chip g-das">-nis<small>das Erlebnis</small></span>
+        <span class="gm-chip g-das">-tum<small>das Wachstum</small></span>
+        <span class="gm-chip g-das">-ment<small>das Dokument</small></span>
+        <span class="gm-chip g-das">инфинитив<small>das Essen</small></span>
+      </div>
+      <p class="gm-note">Это не таблица для зубрёжки. Это цветовая подсказка: увидели конец слова — знаете артикль. <strong>Девятнадцать окончаний</strong> закрывают огромный кусок немецких существительных, включая почти всю канцелярскую лексику, с которой вы столкнётесь в Amt.</p>
+    </div>
+
+    <p class="hit rv" style="margin-top:24px">Ужасный ужас сдулся до девятнадцати строчек.</p>
+  </div>
+</section>
+
 <!-- ================= PROGRESS / MATH ================= -->
 <section class="sec-paper2">
   <div class="wrap">
-    <p class="eyebrow rv">02 · Математика</p>
+    <p class="eyebrow rv">03 · Математика</p>
     <h2 class="d2 rv">Считаем,<br>сколько это <span class="tan">даёт</span></h2>
     <p class="lead rv" style="max-width:44ch;margin-top:14px">Я не люблю красивые обещания, поэтому давайте просто арифметику.</p>
 
@@ -651,15 +1021,89 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
       </div>
     </div>
 
+    <div class="vs rv" style="margin-top:26px">
+      <div class="vs-col vs-a">
+        <p class="vs-t">Как обычно</p>
+        <p class="vs-h">Список</p>
+        <div class="vs-flat">
+          <i>Freund</i><i>freundlich</i><i>unfreundlich</i><i>Freundschaft</i>
+          <i>Freundlichkeit</i><i>Freundeskreis</i><i>befreundet</i><i>Unfreundlichkeit</i>
+        </div>
+        <p class="vs-m"><span class="vs-big">8 → 8</span>Восемь слов — восемь отдельных усилий памяти. Забыли одно — потеряли одно. Забыли всё — начали заново.</p>
+      </div>
+      <div class="vs-col vs-b">
+        <p class="vs-t">Как надо</p>
+        <p class="vs-h">Система</p>
+        <div class="vs-sys">
+          <svg viewBox="0 0 250 116" role="img" aria-label="Схема: один корень в центре, восемь производных слов вокруг">
+            <g stroke="#5A544D" stroke-width="1.4" fill="none">
+              <path d="M125,58 L40,20"/><path d="M125,58 L40,58"/><path d="M125,58 L40,96"/>
+              <path d="M125,58 L210,20"/><path d="M125,58 L210,58"/><path d="M125,58 L210,96"/>
+              <path d="M125,58 L95,10"/><path d="M125,58 L155,106"/>
+            </g>
+            <g fill="#C89A76">
+              <circle cx="40" cy="20" r="7"/><circle cx="40" cy="58" r="7"/><circle cx="40" cy="96" r="7"/>
+              <circle cx="210" cy="20" r="7"/><circle cx="210" cy="58" r="7"/><circle cx="210" cy="96" r="7"/>
+              <circle cx="95" cy="10" r="7"/><circle cx="155" cy="106" r="7"/>
+            </g>
+            <circle cx="125" cy="58" r="21" fill="#F0625C"/>
+            <text x="125" y="63" text-anchor="middle" fill="#fff" font-family="Oswald,sans-serif" font-size="13" font-weight="600">Freund</text>
+          </svg>
+        </div>
+        <p class="vs-m"><span class="vs-big">1 → 8</span>Один корень и правило. Забыли слово — собрали заново прямо в разговоре. Память тут почти не участвует.</p>
+      </div>
+    </div>
+
+    <div class="pilebox rv" id="pilebox" style="margin-top:26px">
+      <div class="pile-n"><span data-count="3000">0</span><span>+</span></div>
+      <p class="pile-l">слов из 500 корней</p>
+      <div class="pile" id="pile" aria-hidden="true">
+        <i class="c3" style="left:6%;bottom:6px;--rest:translateY(0) rotate(-9deg)">un·</i>
+        <i class="c2" style="left:30%;bottom:4px;--rest:translateY(0) rotate(5deg)">miss·</i>
+        <i class="c1" style="left:57%;bottom:8px;--rest:translateY(0) rotate(-6deg)">·lich</i>
+        <i class="c1" style="left:80%;bottom:5px;--rest:translateY(0) rotate(8deg)">·bar</i>
+        <i class="c4" style="left:14%;bottom:46px;--rest:translateY(0) rotate(7deg)">·ig</i>
+        <i class="c2" style="left:36%;bottom:44px;--rest:translateY(0) rotate(-4deg)">·keit</i>
+        <i class="c1" style="left:62%;bottom:48px;--rest:translateY(0) rotate(6deg)">·ung</i>
+        <i class="c3" style="left:84%;bottom:45px;--rest:translateY(0) rotate(-10deg)">ur·</i>
+        <i class="c2" style="left:4%;bottom:86px;--rest:translateY(0) rotate(4deg)">·heit</i>
+        <i class="c1" style="left:28%;bottom:88px;--rest:translateY(0) rotate(-7deg)">·los</i>
+        <i class="c4" style="left:52%;bottom:84px;--rest:translateY(0) rotate(5deg)">·schaft</i>
+        <i class="c1" style="left:82%;bottom:87px;--rest:translateY(0) rotate(-5deg)">·chen</i>
+        <i class="c3" style="left:18%;bottom:126px;--rest:translateY(0) rotate(6deg)">ge·</i>
+        <i class="c2" style="left:44%;bottom:128px;--rest:translateY(0) rotate(-6deg)">·er</i>
+        <i class="c4" style="left:68%;bottom:124px;--rest:translateY(0) rotate(7deg)">·nis</i>
+      </div>
+    </div>
+
     <p class="hit rv" style="margin-top:26px">Один вечер на схему. И словарь перестаёт расти линейно.</p>
     <p class="lead rv">Это, собственно, единственная причина, по которой я вообще сел писать этот разбор.</p>
   </div>
 </section>
 
+<div class="scatter" id="scatter" aria-hidden="true">
+    <i style="left:4%;top:8%;font-size:clamp(46px,15vw,104px);color:var(--coral);transform:rotate(-13deg)" data-sy=".16" data-sx="-.22">un·</i>
+    <i style="left:58%;top:3%;font-size:clamp(40px,13vw,88px);color:var(--graphite);transform:rotate(9deg)" data-sy=".10" data-sx=".28">·lich</i>
+    <i style="left:12%;top:26%;font-size:clamp(38px,12vw,78px);color:var(--sand);transform:rotate(6deg)" data-sy=".22" data-sx=".18">·keit</i>
+    <i style="left:70%;top:24%;font-size:clamp(34px,11vw,70px);color:var(--coral);transform:rotate(-8deg)" data-sy=".14" data-sx="-.3">·bar</i>
+    <i style="left:2%;top:50%;font-size:clamp(36px,12vw,74px);color:var(--graphite);transform:rotate(11deg)" data-sy=".09" data-sx=".34">miss·</i>
+    <i style="left:62%;top:48%;font-size:clamp(42px,14vw,86px);color:var(--sand);transform:rotate(-6deg)" data-sy=".2" data-sx="-.16">·ung</i>
+    <i style="left:26%;top:70%;font-size:clamp(38px,12vw,80px);color:var(--coral);transform:rotate(7deg)" data-sy=".12" data-sx=".26">·heit</i>
+    <i style="left:76%;top:70%;font-size:clamp(32px,10vw,62px);color:var(--graphite);transform:rotate(-11deg)" data-sy=".18" data-sx="-.2">ur·</i>
+    <i style="left:6%;top:86%;font-size:clamp(30px,10vw,58px);color:var(--sand);transform:rotate(5deg)" data-sy=".1" data-sx=".3">·chen</i>
+    <i style="left:46%;top:86%;font-size:clamp(34px,11vw,66px);color:var(--sand-2);transform:rotate(-5deg)" data-sy=".24" data-sx="-.12">·schaft</i>
+    <i style="left:88%;top:44%;font-size:clamp(30px,9vw,54px);color:var(--sand-2);transform:rotate(13deg)" data-sy=".15" data-sx=".22">ge·</i>
+    <i style="left:34%;top:44%;font-size:clamp(30px,9vw,52px);color:var(--sand-2);transform:rotate(-9deg)" data-sy=".26" data-sx="-.28">·los</i>
+  <div class="scatter-mid" aria-hidden="false">
+    <h2 class="d3">Всего<br>тридцать <span class="tan">деталей</span></h2>
+    <p>Столько приставок и суффиксов реально работают в живом языке. Не тысяча слов — тридцать деталей.</p>
+  </div>
+</div>
+
 <!-- ================= AFFIX REFERENCE ================= -->
 <section>
   <div class="wrap">
-    <p class="eyebrow rv">03 · Справочник</p>
+    <p class="eyebrow rv">04 · Справочник</p>
     <h2 class="d2 rv">Все детали<br>на <span class="tan">одной странице</span></h2>
     <p class="lead rv" style="max-width:46ch;margin-top:14px">Жмите на любую — внутри примеры с переводом. Не пытайтесь выучить всё за раз, это бессмысленно. Прочитайте, поймайте логику, возвращайтесь.</p>
 
@@ -680,7 +1124,7 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
 <!-- ================= BUILDER ================= -->
 <section id="builder" class="sec-dark">
   <div class="wrap">
-    <p class="eyebrow rv">04 · Практика</p>
+    <p class="eyebrow rv">05 · Практика</p>
     <h2 class="d2 wht rv">Соберите<br>слово <span class="tan">сами</span></h2>
     <p class="lead rv" style="max-width:46ch;margin-top:14px">Выберите приставку, корень и суффикс. Некоторые комбинации не существуют — так и должно быть, и это тоже полезно увидеть своими глазами.</p>
 
@@ -701,11 +1145,25 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
 <!-- ================= KOMPOSITA ================= -->
 <section class="sec-sand">
   <div class="wrap">
-    <p class="eyebrow dark rv">05 · Komposita</p>
+    <p class="eyebrow dark rv">06 · Komposita</p>
     <h2 class="d2 rv">Длинные слова —<br>это <span class="tan">простые слова</span></h2>
     <p class="lead rv" style="max-width:46ch;margin-top:14px">Сложные существительные пугают только на вид. Правило ровно одно, и оно спасает вам артикль.</p>
 
-    <div class="komp rv" style="margin-top:20px">
+    <div class="ka rv" id="ka" style="margin-top:20px">
+      <div class="ka-row">
+        <div class="ka-seg">Haupt<small>главный</small></div>
+        <div class="ka-seg">Bahn<small>дорога</small></div>
+        <div class="ka-seg">Hof<small>der · двор</small></div>
+      </div>
+      <div class="ka-res">
+        <div class="rw">der Hauptbahnhof</div>
+        <p class="rt">главный железнодорожный вокзал</p>
+      </div>
+      <div class="ka-arrow"><span>←</span> род берём у последнего слова</div>
+      <button class="btn btn-dark ka-btn" id="ka-btn" type="button">Собрать слово</button>
+    </div>
+
+    <div class="komp rv" style="margin-top:14px">
       <div class="komp-row">
         <div class="kw">die Reise<small>поездка</small></div>
         <span class="kplus">+</span>
@@ -723,7 +1181,7 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
       <p class="komp-note"><b>= die Universitätsbibliothek</b>. Соединительная <b>-s-</b> появляется после женских слов на <span class="de">-ät, -heit, -keit, -schaft, -ung</span> и после некоторых мужских вроде <span class="de">Beruf, Unterricht</span>.</p>
     </div>
 
-    <div class="grid grid-3 rv" style="margin-top:16px">
+    <div class="grid grid-3 rv stag" style="margin-top:16px">
       <div class="card"><h3>Два слова</h3><p class="lead" style="font-size:15px;margin:0"><span class="de">die Tomatensuppe</span><br>томатный суп</p></div>
       <div class="card"><h3>Три слова</h3><p class="lead" style="font-size:15px;margin:0"><span class="de">der Hauptbahnhof</span><br>главный вокзал</p></div>
       <div class="card"><h3>Четыре слова</h3><p class="lead" style="font-size:15px;margin:0"><span class="de">der Schwarzweißfernseher</span><br>чёрно-белый телевизор</p></div>
@@ -736,9 +1194,9 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
 <!-- ================= QUIZ ================= -->
 <section id="quiz">
   <div class="wrap">
-    <p class="eyebrow rv">06 · Проверка</p>
-    <h2 class="d2 rv">Шесть вопросов,<br><span class="tan">две минуты</span></h2>
-    <p class="lead rv" style="max-width:44ch;margin-top:14px">Если наберёте меньше четырёх — это не приговор, а просто повод перечитать блок 03. Знание ≠ навык, помните.</p>
+    <p class="eyebrow rv">07 · Проверка</p>
+    <h2 class="d2 rv">Шесть вопросов,<br><span class="scr o tan"><span>две минуты</span><svg viewBox="0 0 300 92" preserveAspectRatio="none" aria-hidden="true"><path d="M152,8 C62,8 8,27 8,46 C8,67 72,84 154,84 C234,84 292,66 292,45 C292,25 236,8 150,8 C122,8 98,12 82,19"/></svg></span></h2>
+    <p class="lead rv" style="max-width:44ch;margin-top:14px">Если наберёте меньше четырёх — это не приговор, а просто повод перечитать блок 04. Знание ≠ навык, помните.</p>
 
     <div class="quiz rv" id="quiz" style="margin-top:20px">
       <div class="q-top">
@@ -768,11 +1226,24 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
 <!-- ================= PLATFORM ================= -->
 <section id="platform" class="sec-paper2">
   <div class="wrap">
-    <p class="eyebrow rv">07 · Платформа</p>
+    <p class="eyebrow rv">08 · Платформа</p>
     <h2 class="d2 rv">Stellas Deutsch<br><span class="tan">A0 → C1</span></h2>
     <p class="lead rv" style="max-width:46ch;margin-top:14px">Это не курс с созвонами в неудобное время и домашками «чтобы было». Это база знаний в Notion, которую вы открываете тогда, когда у вас есть силы. В том числе офлайн, в метро, в ночную смену.</p>
 
-    <div class="shots rv" style="margin-top:24px">
+    <div class="lvltrack rv" id="lvltrack" style="margin-top:22px">
+      <div class="lt-line"><i></i></div>
+      <div class="lt-dots">
+        <span class="lt-dot"><b></b><span>A0</span></span>
+        <span class="lt-dot"><b></b><span>A1</span></span>
+        <span class="lt-dot"><b></b><span>A2</span></span>
+        <span class="lt-dot"><b></b><span>B1</span></span>
+        <span class="lt-dot"><b></b><span>B2</span></span>
+        <span class="lt-dot"><b></b><span>C1</span></span>
+      </div>
+      <div class="lt-cap"><span>С нуля</span><span>340+ гайдов разложены по этой шкале</span></div>
+    </div>
+
+    <div class="shots rv stag" style="margin-top:24px">
       <div class="shot">
         <img src="assets/platform/p1-home.jpg" alt="Главная страница платформы Stellas в Notion: навигация, таймер, заметки и подборки ресурсов" loading="lazy">
         <div class="cap"><b>Одна точка входа</b><span>Грамматика, лексика, план, ресурсы по уровням. Не сорок вкладок, а одна страница, с которой всё видно.</span></div>
@@ -800,7 +1271,7 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
     </div>
 
     <h3 class="d4 rv" style="margin:34px 0 16px">Что это решает по пунктам</h3>
-    <div class="feat rv">
+    <div class="feat rv stag">
       <div class="feat-item"><div class="feat-ic">1</div><div><b>«Работаю в три смены, курсы не вариант»</b><span>Notion ставится приложением на телефон и ноут и работает офлайн. Пятнадцать минут в транспорте — это уже занятие.</span></div></div>
       <div class="feat-item"><div class="feat-ic">2</div><div><b>«Курсы слишком быстрые, я не успеваю»</b><span>Доступ навсегда. Один платёж. Можно вернуться к теме через год и перечитать десять раз — никто не заберёт.</span></div></div>
       <div class="feat-item"><div class="feat-ic">3</div><div><b>«Боюсь говорить»</b><span>Диалоги и озвучка на каждое слово. Сначала вы слышите и повторяете в одиночестве — там, где вас никто не оценит.</span></div></div>
@@ -809,7 +1280,7 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
       <div class="feat-item"><div class="feat-ic">6</div><div><b>«Я не способен к языкам»</b><span>Половина того, что зовут способностями — это системность подачи. Разбор выше вы поняли. Значит, способны.</span></div></div>
     </div>
 
-    <div class="vids rv" style="margin-top:26px">
+    <div class="vids rv stag" style="margin-top:26px">
       <div class="vid"><video src="assets/video/grammar.mp4" muted loop playsinline preload="metadata" controls></video><div class="vc">Гайд по грамматике внутри</div></div>
       <div class="vid"><video src="assets/video/topic.mp4" muted loop playsinline preload="metadata" controls></video><div class="vc">Разбор темы</div></div>
       <div class="vid"><video src="assets/video/shop.mp4" muted loop playsinline preload="metadata" controls></video><div class="vc">Лексика по ситуации</div></div>
@@ -820,7 +1291,7 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
 <!-- ================= REVIEWS ================= -->
 <section>
   <div class="wrap">
-    <p class="eyebrow rv">08 · Отзывы</p>
+    <p class="eyebrow rv">09 · Отзывы</p>
     <h2 class="d2 rv">Скриншоты,<br>а не <span class="tan">пересказ</span></h2>
     <p class="lead rv" style="max-width:44ch;margin-top:14px">Не буду цитировать выборочно и красиво. Вот как есть, из личных сообщений.</p>
   </div>
@@ -841,11 +1312,11 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
 <!-- ================= PRICE ================= -->
 <section id="price" class="sec-sand">
   <div class="wrap">
-    <p class="eyebrow dark rv">09 · Тарифы</p>
-    <h2 class="d2 rv">Цена, которую<br>не надо <span class="tan">обдумывать</span></h2>
+    <p class="eyebrow dark rv">10 · Тарифы</p>
+    <h2 class="d2 rv">Цена, которую<br>не надо <span class="scr u tan"><span>обдумывать</span><svg viewBox="0 0 300 26" preserveAspectRatio="none" aria-hidden="true"><path d="M6,17 C58,7 138,4 208,10 C250,13.5 281,18 294,14"/><path d="M14,22 C72,14 152,11 222,16 C258,18.5 283,21 292,19"/></svg></span></h2>
     <p class="lead rv" style="max-width:46ch;margin-top:14px">Мы сознательно не делаем продукт за 500 евро с рассрочкой от банка. Тут нет обратной связи — поэтому и цена такая. Это честный размен, а не аттракцион щедрости.</p>
 
-    <div class="plans rv" style="margin-top:28px">
+    <div class="plans rv stag" style="margin-top:28px">
       <div class="plan">
         <h3>Старт</h3>
         <div class="lvl">A0 · A1 · A2</div>
@@ -901,7 +1372,7 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
 <!-- ================= FAQ ================= -->
 <section>
   <div class="wrap">
-    <p class="eyebrow rv">10 · Вопросы</p>
+    <p class="eyebrow rv">11 · Вопросы</p>
     <h2 class="d2 rv">Что <span class="tan">спрашивают</span><br>чаще всего</h2>
     <div class="faq rv" id="faq" style="margin-top:24px"></div>
   </div>
@@ -941,71 +1412,182 @@ footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
 <script>
 document.documentElement.classList.add('js');
 
-/* ---------- REVEAL ---------- */
-(function(){
-  var els = document.querySelectorAll('.rv');
-  if(!('IntersectionObserver' in window)){
-    els.forEach(function(e){e.classList.add('in')});
-    return;
+/* ---------- VIEWPORT SCHEDULER ----------
+   Скролл-ориентированный планировщик вместо IntersectionObserver:
+   работает везде и гарантированно показывает контент, даже если что-то пошло не так. */
+var onView = (function(){
+  var q = [];
+  function check(){
+    for(var i=q.length-1;i>=0;i--){
+      var it = q[i], r = it.el.getBoundingClientRect();
+      if(r.top < window.innerHeight * (it.t || 0.94) && r.bottom > -60){
+        q.splice(i,1);
+        try{ it.fn(it.el); }catch(e){}
+      }
+    }
+    if(!q.length){
+      window.removeEventListener('scroll', tick);
+      window.removeEventListener('resize', tick);
+    }
   }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
-    });
-  },{rootMargin:'0px 0px -8% 0px',threshold:.08});
-  els.forEach(function(e){io.observe(e)});
-  // safety net
-  setTimeout(function(){els.forEach(function(e){
-    if(e.getBoundingClientRect().top < window.innerHeight) e.classList.add('in');
-  })},400);
+  var ticking = false;
+  function tick(){
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){ ticking = false; check(); });
+  }
+  window.addEventListener('scroll', tick, {passive:true});
+  window.addEventListener('resize', tick);
+  setTimeout(check, 50); setTimeout(check, 400); setTimeout(check, 1200);
+  /* страховка: ничего не остаётся невидимым, что бы ни случилось */
+  setTimeout(function(){ while(q.length){ var it = q.pop(); try{ it.fn(it.el); }catch(e){} } }, 5000);
+  return function(el, fn, t){ if(!el) return; q.push({el:el, fn:fn, t:t}); tick(); };
+})();
+
+/* ---------- REVEAL ---------- */
+Array.prototype.forEach.call(document.querySelectorAll('.rv'), function(el){
+  onView(el, function(e){ e.classList.add('in'); });
+});
+
+/* ---------- TREE ---------- */
+onView(document.getElementById('tree'), function(el){ el.classList.add('on'); }, .82);
+
+/* ---------- LEVEL TRACK ---------- */
+onView(document.getElementById('lvltrack'), function(el){
+  el.querySelector('.lt-line i').style.width = '100%';
+  Array.prototype.forEach.call(el.querySelectorAll('.lt-dot'), function(d,i){
+    setTimeout(function(){ d.classList.add('hit'); }, 180 + i*260);
+  });
+}, .82);
+
+/* ---------- KOMPOSITA ASSEMBLY ---------- */
+(function(){
+  var ka = document.getElementById('ka'), btn = document.getElementById('ka-btn');
+  if(!ka || !btn) return;
+  btn.addEventListener('click', function(){
+    var joined = ka.classList.toggle('joined');
+    btn.textContent = joined ? 'Разобрать обратно' : 'Собрать слово';
+  });
+  onView(ka, function(){
+    setTimeout(function(){
+      if(!ka.classList.contains('joined')){
+        ka.classList.add('joined');
+        btn.textContent = 'Разобрать обратно';
+      }
+    }, 700);
+  }, .72);
 })();
 
 /* ---------- COUNTERS ---------- */
-(function(){
-  var nodes = document.querySelectorAll('[data-count]');
-  function run(el){
-    var target = parseFloat(el.dataset.count), sfx = el.dataset.suffix || '';
+Array.prototype.forEach.call(document.querySelectorAll('[data-count]'), function(el){
+  onView(el, function(e){
+    var target = parseFloat(e.dataset.count), sfx = e.dataset.suffix || '';
     var dur = 1400, t0 = performance.now();
     function step(t){
-      var p = Math.min((t-t0)/dur,1);
-      var e = 1-Math.pow(1-p,3);
-      el.textContent = Math.round(target*e).toLocaleString('ru-RU') + sfx;
-      if(p<1) requestAnimationFrame(step);
+      var p = Math.min((t - t0)/dur, 1), k = 1 - Math.pow(1-p, 3);
+      e.textContent = Math.round(target*k).toLocaleString('ru-RU') + sfx;
+      if(p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
-  }
-  if(!('IntersectionObserver' in window)){ nodes.forEach(run); return; }
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ run(e.target); io.unobserve(e.target); } });
-  },{threshold:.4});
-  nodes.forEach(function(n){io.observe(n)});
-})();
+  });
+});
 
 /* ---------- RING + BARS ---------- */
-(function(){
-  var C = 2*Math.PI*47;
-  function ring(el){
-    var pct = parseFloat(el.dataset.ring)/100;
-    var fg = el.querySelector('.fg');
+Array.prototype.forEach.call(document.querySelectorAll('[data-ring]'), function(el){
+  onView(el, function(e){
+    var C = 2*Math.PI*47, pct = parseFloat(e.dataset.ring)/100, fg = e.querySelector('.fg');
     fg.style.strokeDasharray = C;
     fg.style.strokeDashoffset = C;
     requestAnimationFrame(function(){ fg.style.strokeDashoffset = C*(1-pct); });
-  }
-  function bar(el){ el.style.width = el.dataset.fill + '%'; }
-  var targets = [].slice.call(document.querySelectorAll('[data-ring],[data-fill]'));
-  if(!('IntersectionObserver' in window)){
-    targets.forEach(function(t){ t.dataset.ring ? ring(t) : bar(t); });
-    return;
-  }
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      if(!e.isIntersecting) return;
-      e.target.dataset.ring ? ring(e.target) : bar(e.target);
-      io.unobserve(e.target);
+  });
+});
+Array.prototype.forEach.call(document.querySelectorAll('[data-fill]'), function(el){
+  onView(el, function(e){ e.style.width = e.dataset.fill + '%'; });
+});
+
+
+/* ---------- SCRIBBLE: self-drawing annotations ---------- */
+Array.prototype.forEach.call(document.querySelectorAll('.scr'), function(box){
+  var paths = box.querySelectorAll('path');
+  Array.prototype.forEach.call(paths, function(p){
+    var L = 0;
+    try{ L = p.getTotalLength(); }catch(e){ L = 700; }
+    if(!L || !isFinite(L)) L = 700;
+    p.style.strokeDasharray = L;
+    p.style.strokeDashoffset = L;
+  });
+  onView(box, function(){
+    Array.prototype.forEach.call(paths, function(p){ p.style.strokeDashoffset = 0; });
+  }, .88);
+});
+
+/* ---------- SCATTER: parallax affixes ---------- */
+(function(){
+  var box = document.getElementById('scatter');
+  if(!box) return;
+  var items = [].slice.call(box.querySelectorAll('i')).map(function(el){
+    return {
+      el: el,
+      sy: parseFloat(el.dataset.sy) || 0,
+      sx: parseFloat(el.dataset.sx) || 0,
+      rot: (el.style.transform.match(/-?[\d.]+/) || [0])[0]
+    };
+  });
+  onView(box, function(){ box.classList.add('on'); }, 1);
+  var ticking = false;
+  function move(){
+    var r = box.getBoundingClientRect();
+    if(r.bottom < -100 || r.top > window.innerHeight + 100) return;
+    var mid = window.innerHeight/2 - (r.top + r.height/2);
+    items.forEach(function(it){
+      it.el.style.transform = 'translate3d(' + (mid*it.sx).toFixed(1) + 'px,' +
+                              (mid*it.sy).toFixed(1) + 'px,0) rotate(' + it.rot + 'deg)';
     });
-  },{threshold:.3});
-  targets.forEach(function(t){io.observe(t)});
+  }
+  function tick(){
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){ ticking = false; move(); });
+  }
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    window.addEventListener('scroll', tick, {passive:true});
+    window.addEventListener('resize', tick);
+  }
+  move();
 })();
+
+/* ---------- PILE: affix chips drop and stack ---------- */
+onView(document.getElementById('pile'), function(el){
+  var chips = el.querySelectorAll('i');
+  Array.prototype.forEach.call(chips, function(c, i){
+    c.style.transitionDelay = (0.06 * i) + 's, ' + (0.06 * i) + 's';
+  });
+  el.classList.add('on');
+}, .82);
+
+/* ---------- CONFETTI ---------- */
+function confetti(n){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var host = document.createElement('div');
+  host.className = 'conf';
+  var colors = ['#F0625C','#C89A76','#232120','#DDB595','#F0DDCB'];
+  var html = '';
+  for(var i=0;i<(n||44);i++){
+    var left = Math.random()*100;
+    var top  = 8 + Math.random()*28;
+    var x    = (Math.random()*260-130).toFixed(0);
+    var r    = (Math.random()*900-450).toFixed(0);
+    var d    = (1.9 + Math.random()*1.5).toFixed(2);
+    var c    = colors[i % colors.length];
+    var w    = 6 + Math.round(Math.random()*6);
+    html += '<i style="left:'+left+'%;top:'+top+'%;background:'+c+';width:'+w+'px;height:'+
+            (w+5)+'px;--x:'+x+'px;--r:'+r+'deg;--d:'+d+'s;animation-delay:'+
+            (Math.random()*0.35).toFixed(2)+'s"></i>';
+  }
+  host.innerHTML = html;
+  document.body.appendChild(host);
+  setTimeout(function(){ host.remove(); }, 4200);
+}
 
 /* ---------- AFFIX DATA ---------- */
 var AFFIX = {
@@ -1209,12 +1791,13 @@ var AFFIX = {
   function draw(){
     if(i >= Q.length){
       elC.textContent = 'Готово';
-      elT.innerHTML = score >= 5 ? 'Вы поняли механизм.' : (score >= 3 ? 'База есть, детали доберём.' : 'Перечитайте блок 03 — и вернитесь.');
+      elT.innerHTML = score >= 5 ? 'Вы поняли механизм.' : (score >= 3 ? 'База есть, детали доберём.' : 'Перечитайте блок 04 — и вернитесь.');
       elO.innerHTML = '';
       elF.innerHTML = score >= 5
         ? '<b>'+score+' из 6.</b> Именно так и выглядит момент, когда язык перестаёт быть списком и становится системой. Дальше — просто объём: гайды, слова, практика.'
         : '<b>'+score+' из 6.</b> И это нормально: за один прогон такое не усваивается. Знание ≠ навык. Откройте справочник выше ещё раз, а потом попробуйте снова.';
       elB.style.width = '100%';
+      if(score >= 5) confetti(60);
       return;
     }
     var q = Q[i];
@@ -1286,17 +1869,9 @@ var AFFIX = {
 })();
 
 /* ---------- VIDEO: play on view ---------- */
-(function(){
-  var vids = document.querySelectorAll('.vid video');
-  if(!('IntersectionObserver' in window)) return;
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      if(e.isIntersecting) { e.target.play().catch(function(){}); }
-      else e.target.pause();
-    });
-  },{threshold:.5});
-  vids.forEach(function(v){io.observe(v)});
-})();
+Array.prototype.forEach.call(document.querySelectorAll('.vid video'), function(v){
+  onView(v, function(el){ el.play().catch(function(){}); }, .7);
+});
 </script>
 </body>
 </html>
