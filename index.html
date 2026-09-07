@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Немецкое словообразование — Stellas Deutsch</title>
+<meta name="description" content="Приставки и суффиксы в немецком: как перестать зубрить слова и начать их собирать. Разбор от парня, который учит немецкий в Вене. Платформа Stellas Deutsch, A0–C1.">
+<meta property="og:title" content="Немецкий можно не зубрить">
+<meta property="og:description" content="Приставки и суффиксы: механизм, который превращает 500 знакомых корней в 3000 понятных слов.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --paper:#EFEDE8;
+  --paper-2:#F7F5F1;
+  --white:#FFFFFF;
+  --sand:#C89A76;
+  --sand-2:#DDB595;
+  --sand-3:#F0DDCB;
+  --sand-4:#FAF0E7;
+  --graphite:#232120;
+  --graphite-2:#38352F;
+  --ink:#22201E;
+  --ink-2:#5A544D;
+  --ink-3:#8C847A;
+  --coral:#F0625C;
+  --coral-2:#DC4A44;
+  --line:#DCD6CC;
+  --line-2:#C7BFB2;
+  --ok:#3F7D5E;
+
+  --r-pill:999px;
+  --r-lg:26px;
+  --r-md:16px;
+
+  --sh-1:0 2px 8px rgba(35,33,32,.06);
+  --sh-2:0 14px 40px rgba(35,33,32,.12);
+  --sh-3:0 22px 60px rgba(35,33,32,.18);
+
+  --pad:20px;
+  --maxw:1180px;
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img,video{max-width:100%;display:block}
+[hidden]{display:none!important}
+
+/* paper grain */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.11'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
+}
+
+/* ============ TYPE ============ */
+.d1,.d2,.d3,.d4{
+  font-family:"Oswald",Impact,"Arial Narrow",sans-serif;
+  font-weight:700;text-transform:uppercase;line-height:.92;
+  letter-spacing:.005em;margin:0;text-wrap:balance;
+}
+.d1{font-size:clamp(38px,11.5vw,86px)}
+.d2{font-size:clamp(30px,8.6vw,60px)}
+.d3{font-size:clamp(24px,6.4vw,40px)}
+.d4{font-size:clamp(18px,4.8vw,26px)}
+.tan{color:var(--sand)}
+.grey{color:#9B958C}
+.wht{color:#fff}
+.eyebrow{
+  font-family:"Manrope",sans-serif;font-weight:800;font-size:11px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--sand);margin:0 0 14px;
+}
+.eyebrow.dark{color:var(--ink-3)}
+p{margin:0 0 14px}
+.lead{font-size:17px;line-height:1.65;color:var(--ink-2)}
+.hit{font-weight:800;font-size:19px;line-height:1.4;color:var(--ink)}
+strong{font-weight:800}
+.de{font-weight:700;color:var(--graphite)}
+.spark{color:var(--sand);font-style:italic}
+
+/* ============ LAYOUT ============ */
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);position:relative;z-index:2}
+section{padding:56px 0;position:relative}
+.sec-dark{background:var(--graphite);color:#EDE9E3}
+.sec-dark p{color:#B8B2A9}
+.sec-sand{background:linear-gradient(180deg,var(--sand-3),var(--sand-4))}
+.sec-paper2{background:var(--paper-2)}
+.stack{display:flex;flex-direction:column;gap:14px}
+.grid{display:grid;gap:14px}
+
+/* ============ BUTTONS / PILLS ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:"Manrope",sans-serif;font-weight:800;font-size:13px;
+  letter-spacing:.14em;text-transform:uppercase;
+  padding:19px 30px;border-radius:var(--r-pill);border:0;cursor:pointer;
+  text-decoration:none;text-align:center;transition:transform .18s ease,box-shadow .18s ease,background .18s;
+}
+.btn-coral{background:var(--coral);color:#fff;box-shadow:0 12px 26px rgba(240,98,92,.36)}
+.btn-coral:hover{background:var(--coral-2);transform:translateY(-2px);box-shadow:0 16px 34px rgba(240,98,92,.44)}
+.btn-dark{background:var(--graphite);color:#fff}
+.btn-dark:hover{transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-2)}
+.btn-ghost:hover{border-color:var(--sand);color:var(--sand)}
+.btn:focus-visible,a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(--sand);outline-offset:3px}
+.btn-wide{width:100%}
+
+.chip{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--white);border:1px solid var(--line);
+  border-radius:var(--r-pill);padding:8px 15px;
+  font-size:12px;font-weight:700;letter-spacing:.05em;color:var(--ink-2);
+}
+.chip b{color:var(--sand);font-weight:800}
+
+.oval{
+  background:var(--white);border-radius:var(--r-pill);
+  padding:16px 20px;text-align:center;box-shadow:var(--sh-1);
+}
+.oval .n{font-family:"Oswald",sans-serif;font-size:26px;font-weight:700;line-height:1;color:var(--graphite)}
+.oval .l{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:700;margin-top:5px}
+
+/* ============ HEADER ============ */
+header{
+  position:sticky;top:0;z-index:60;
+  background:rgba(239,237,232,.9);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px var(--pad);max-width:var(--maxw);margin:0 auto}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink)}
+.brand img{width:30px;height:30px}
+.brand span{font-family:"Oswald",sans-serif;font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:.04em}
+.hd .btn{padding:12px 18px;font-size:11px}
+nav.desk{display:none}
+
+/* ============ HERO ============ */
+.hero{
+  background:
+    radial-gradient(120% 80% at 80% 0%,var(--sand-4) 0%,rgba(250,240,231,0) 60%),
+    linear-gradient(180deg,var(--paper-2) 0%,var(--paper) 100%);
+  padding:26px 0 0;overflow:hidden;
+}
+.hero-badges{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px}
+.hero h1{margin:0 0 16px}
+.hero .lead{max-width:36ch}
+.hero-cta{display:flex;flex-direction:column;gap:11px;margin:22px 0 8px}
+.hero-note{font-size:12.5px;color:var(--ink-3);display:flex;align-items:center;gap:7px}
+.hero-art{position:relative;margin:30px -8px 0;padding-bottom:8px}
+.hero-bird{
+  position:absolute;right:-6px;top:-16px;width:78px;opacity:.14;
+  animation:float 7s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
+
+/* phone mock */
+.phone{
+  width:196px;margin:0 auto;background:var(--graphite);border-radius:34px;padding:8px;
+  box-shadow:var(--sh-3);position:relative;
+}
+.phone::before{content:"";position:absolute;top:15px;left:50%;transform:translateX(-50%);width:56px;height:5px;background:#000;border-radius:99px;z-index:3}
+.phone video,.phone img{border-radius:27px;width:100%;aspect-ratio:9/17;object-fit:cover;background:#111}
+
+.hero-strip{
+  display:flex;gap:9px;margin-top:22px;overflow-x:auto;padding:2px 2px 12px;
+  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+}
+.hero-strip::-webkit-scrollbar{height:0}
+.hero-strip .oval{flex:0 0 auto;min-width:112px;scroll-snap-align:start}
+
+/* marquee */
+.marquee{background:var(--graphite);color:#EDE9E3;overflow:hidden;padding:12px 0;border-top:1px solid #35322D}
+.marquee-in{display:flex;gap:34px;white-space:nowrap;animation:mq 26s linear infinite;will-change:transform}
+.marquee span{font-family:"Oswald",sans-serif;text-transform:uppercase;font-size:14px;letter-spacing:.13em;color:#8E877C}
+.marquee span b{color:var(--sand-2);font-weight:600}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee-in{animation:none}.hero-bird{animation:none}}
+
+/* ============ REVEAL ============ */
+.rv{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.js .rv{opacity:0;transform:translateY(26px)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}}
+
+/* ============ CARDS ============ */
+.card{background:var(--white);border-radius:var(--r-lg);padding:24px 20px;box-shadow:var(--sh-1)}
+.card-dark{background:var(--graphite-2);color:#EDE9E3;border-radius:var(--r-lg);padding:24px 20px}
+.card h3{margin:0 0 8px;font-size:18px;font-weight:800}
+.card p:last-child{margin-bottom:0}
+
+/* pain quotes */
+.quotes{display:grid;gap:11px}
+.quote{
+  background:#2E2B27;border-radius:20px;padding:16px 18px;
+  border-left:3px solid var(--coral);
+}
+.quote p{margin:0;font-size:15px;color:#D6D0C7;line-height:1.5}
+.quote .who{display:block;margin-top:8px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7C756A;font-weight:700}
+
+/* numbered ovals (как «на кого рассчитан») */
+.who-list{display:flex;flex-direction:column;gap:12px}
+.who-item{display:grid;grid-template-columns:46px 1fr;gap:14px;align-items:start}
+.who-num{
+  width:46px;height:60px;border-radius:var(--r-pill);background:var(--graphite);
+  color:#fff;font-family:"Oswald",sans-serif;font-size:22px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.sec-sand .who-item h4{margin:2px 0 4px;font-size:16px;font-weight:800;color:var(--ink)}
+.who-item p{margin:0;font-size:14.5px;color:var(--ink-2)}
+
+/* ============ ANATOMY DIAGRAM ============ */
+.anat{background:var(--white);border-radius:var(--r-lg);padding:24px 16px;box-shadow:var(--sh-1)}
+.anat-word{display:flex;justify-content:center;flex-wrap:wrap;gap:5px;margin-bottom:18px}
+.morph{
+  border-radius:14px;padding:12px 12px 10px;text-align:center;min-width:74px;
+  font-family:"Oswald",sans-serif;font-size:clamp(19px,5.6vw,30px);font-weight:600;line-height:1;
+  border:2px solid transparent;transition:transform .3s ease;
+}
+.morph small{display:block;font-family:"Manrope",sans-serif;font-size:9.5px;font-weight:800;
+  letter-spacing:.12em;text-transform:uppercase;margin-top:7px;opacity:.65}
+.m-pre{background:var(--coral);color:#fff}
+.m-root{background:var(--graphite);color:#fff}
+.m-suf{background:var(--sand);color:#fff}
+.anat-word:hover .morph{transform:translateY(-3px)}
+.anat-res{text-align:center;border-top:1px dashed var(--line-2);padding-top:16px}
+.anat-res .de{font-size:22px;font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.01em}
+.anat-res p{margin:6px 0 0;font-size:14.5px;color:var(--ink-2)}
+
+/* ============ PROGRESS ============ */
+.stat-ring{display:flex;align-items:center;gap:18px;background:var(--white);border-radius:var(--r-lg);padding:20px;box-shadow:var(--sh-1)}
+.ring{position:relative;flex:0 0 auto;width:104px;height:104px}
+.ring svg{transform:rotate(-90deg);width:104px;height:104px;display:block}
+.ring circle{fill:none;stroke-width:9;stroke-linecap:round}
+.ring .bg{stroke:#EDE7DE}
+.ring .fg{stroke:var(--sand);stroke-dasharray:295;stroke-dashoffset:295;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.7,.3,1)}
+.ring .val{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:"Oswald",sans-serif;font-size:27px;font-weight:700;color:var(--graphite);
+  font-variant-numeric:tabular-nums;
+}
+.stat-ring p{margin:0;font-size:14.5px;color:var(--ink-2)}
+.stat-ring b{display:block;font-size:16px;color:var(--ink);margin-bottom:4px;font-weight:800}
+
+.bars{display:flex;flex-direction:column;gap:15px;background:var(--white);border-radius:var(--r-lg);padding:22px 20px;box-shadow:var(--sh-1)}
+.bar-row .bt{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;margin-bottom:7px}
+.bar-row .bt b{font-family:"Oswald",sans-serif;font-size:15px;letter-spacing:.04em}
+.bar-row .bt span{font-weight:800;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.track{height:11px;background:#EDE7DE;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;border-radius:99px;transition:width 1.5s cubic-bezier(.2,.7,.3,1)}
+.f1{background:linear-gradient(90deg,#EFD9C4,var(--sand-2))}
+.f2{background:linear-gradient(90deg,var(--sand-2),var(--sand))}
+.f3{background:linear-gradient(90deg,var(--sand),#A97852)}
+.f4{background:linear-gradient(90deg,var(--coral),var(--coral-2))}
+
+/* ============ TABS ============ */
+.tabs{display:flex;gap:7px;overflow-x:auto;padding-bottom:12px;margin-bottom:4px}
+.tabs::-webkit-scrollbar{height:0}
+.tab{
+  flex:0 0 auto;background:transparent;border:1.5px solid var(--line-2);color:var(--ink-2);
+  border-radius:var(--r-pill);padding:11px 17px;font-size:12px;font-weight:800;
+  letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:.2s;
+  font-family:"Manrope",sans-serif;
+}
+.tab[aria-selected="true"]{background:var(--graphite);border-color:var(--graphite);color:#fff}
+
+/* ============ AFFIX LIST ============ */
+.afx{display:flex;flex-direction:column;gap:9px}
+.afx-item{background:var(--white);border-radius:18px;box-shadow:var(--sh-1);overflow:hidden}
+.afx-head{
+  width:100%;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;
+  background:none;border:0;padding:16px 17px;cursor:pointer;text-align:left;font-family:inherit;
+}
+.afx-key{
+  font-family:"Oswald",sans-serif;font-size:19px;font-weight:600;color:#fff;
+  background:var(--sand);border-radius:var(--r-pill);padding:5px 14px;white-space:nowrap;
+}
+.afx-item.neg .afx-key{background:var(--coral)}
+.afx-item.noun .afx-key{background:var(--graphite)}
+.afx-mean{font-size:14px;font-weight:700;color:var(--ink);line-height:1.35}
+.afx-plus{
+  width:26px;height:26px;border-radius:50%;background:var(--sand-4);color:var(--sand);
+  display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;
+  flex:0 0 auto;transition:transform .3s ease,background .3s;line-height:1;
+}
+.afx-head[aria-expanded="true"] .afx-plus{transform:rotate(45deg);background:var(--graphite);color:#fff}
+.afx-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s ease}
+.afx-head[aria-expanded="true"]+.afx-body{grid-template-rows:1fr}
+.afx-body>div{overflow:hidden}
+.afx-in{padding:0 17px 17px;border-top:1px dashed var(--line);margin-top:0}
+.ex{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;padding:11px 0;border-bottom:1px dashed #EDE7DE;font-size:14px}
+.ex:last-child{border-bottom:0}
+.ex .a{color:var(--ink-2)}
+.ex .arw{color:var(--sand);font-weight:800}
+.ex .b{font-weight:800;color:var(--graphite)}
+.ex .tr{grid-column:1/-1;font-size:12.5px;color:var(--ink-3);margin-top:-6px}
+
+/* ============ BUILDER ============ */
+.builder{background:var(--graphite-2);border-radius:var(--r-lg);padding:22px 18px}
+.b-cols{display:grid;gap:14px;margin-bottom:18px}
+.b-col label{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:#8E877C;margin-bottom:8px}
+.b-chips{display:flex;flex-wrap:wrap;gap:6px}
+.b-chip{
+  background:#413D37;border:1.5px solid #4E4941;color:#DDD6CC;border-radius:var(--r-pill);
+  padding:9px 14px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:"Manrope",sans-serif;
+  transition:.16s;
+}
+.b-chip:hover{border-color:var(--sand)}
+.b-chip[aria-pressed="true"]{background:var(--sand);border-color:var(--sand);color:#fff}
+.b-out{background:#1B1917;border-radius:20px;padding:20px 16px;text-align:center;min-height:132px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.b-word{font-family:"Oswald",sans-serif;font-size:clamp(24px,7.4vw,38px);font-weight:600;color:#fff;line-height:1.05;word-break:break-word}
+.b-word .hl{color:var(--sand)}
+.b-word .hlc{color:var(--coral)}
+.b-ru{font-size:15px;color:#B8B2A9;font-weight:600}
+.b-note{font-size:12.5px;color:#7C756A;line-height:1.45;max-width:34ch;margin:4px auto 0}
+.b-bad .b-word{color:#7C756A;font-size:20px}
+
+/* ============ QUIZ ============ */
+.quiz{background:var(--white);border-radius:var(--r-lg);padding:22px 18px;box-shadow:var(--sh-1)}
+.q-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.q-count{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--ink-3)}
+.q-score{font-family:"Oswald",sans-serif;font-size:17px;color:var(--sand);font-variant-numeric:tabular-nums}
+.q-track{height:5px;background:#EDE7DE;border-radius:99px;overflow:hidden;margin-bottom:18px}
+.q-track i{display:block;height:100%;background:var(--sand);width:0;transition:width .4s ease;border-radius:99px}
+.q-text{font-size:18px;font-weight:800;line-height:1.35;margin:0 0 16px}
+.q-text em{font-family:"Oswald",sans-serif;font-style:normal;color:var(--coral);font-weight:600}
+.q-opts{display:flex;flex-direction:column;gap:8px}
+.q-opt{
+  background:var(--paper-2);border:1.5px solid var(--line);border-radius:15px;
+  padding:14px 16px;text-align:left;font-size:14.5px;font-weight:600;cursor:pointer;
+  font-family:"Manrope",sans-serif;color:var(--ink);transition:.16s;
+}
+.q-opt:hover:not(:disabled){border-color:var(--sand)}
+.q-opt:disabled{cursor:default}
+.q-opt.right{background:#E9F3ED;border-color:var(--ok);color:#1F5940}
+.q-opt.wrong{background:#FBEAE9;border-color:var(--coral);color:#9B302B}
+.q-fb{margin:14px 0 0;font-size:14px;color:var(--ink-2);line-height:1.5;min-height:20px}
+.q-fb b{color:var(--ink)}
+
+/* ============ KOMPOSITA ============ */
+.komp{background:var(--white);border-radius:var(--r-lg);padding:22px 18px;box-shadow:var(--sh-1)}
+.komp-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.kw{background:var(--paper);border-radius:13px;padding:10px 13px;font-family:"Oswald",sans-serif;font-size:17px;font-weight:600}
+.kw small{display:block;font-family:"Manrope",sans-serif;font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--ink-3);margin-top:4px}
+.kw.win{background:var(--graphite);color:#fff}
+.kw.win small{color:var(--sand-2)}
+.kplus{font-family:"Oswald",sans-serif;font-size:19px;color:var(--sand);font-weight:600}
+.komp-note{font-size:14px;color:var(--ink-2);text-align:center;margin:0}
+.komp-note b{color:var(--ink)}
+
+/* ============ PLATFORM ============ */
+.shots{display:grid;gap:13px}
+.shot{background:var(--white);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-2)}
+.shot img{width:100%;display:block}
+.shot .cap{padding:15px 18px 18px}
+.shot .cap b{display:block;font-size:15.5px;font-weight:800;margin-bottom:4px}
+.shot .cap span{font-size:13.5px;color:var(--ink-2);line-height:1.5;display:block}
+
+.feat{display:grid;gap:11px}
+.feat-item{display:grid;grid-template-columns:34px 1fr;gap:13px;align-items:start;background:var(--white);border-radius:18px;padding:16px;box-shadow:var(--sh-1)}
+.feat-ic{width:34px;height:34px;border-radius:50%;background:var(--sand-4);color:var(--sand);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.feat-item b{display:block;font-size:15px;margin-bottom:3px;font-weight:800}
+.feat-item span{font-size:13.5px;color:var(--ink-2);line-height:1.5}
+
+.vids{display:grid;gap:14px}
+.vid{background:var(--graphite);border-radius:22px;padding:8px;box-shadow:var(--sh-2)}
+.vid video{border-radius:16px;width:100%;background:#111}
+.vid .vc{padding:11px 8px 6px;font-size:12.5px;color:#B8B2A9;text-align:center}
+
+/* ============ REVIEWS ============ */
+.revs{display:flex;gap:12px;overflow-x:auto;padding:4px 4px 16px;scroll-snap-type:x mandatory;margin:0 calc(var(--pad) * -1);padding-left:var(--pad);padding-right:var(--pad)}
+.revs::-webkit-scrollbar{height:0}
+.rev{flex:0 0 78%;max-width:330px;scroll-snap-align:center;background:var(--white);border-radius:20px;overflow:hidden;box-shadow:var(--sh-2)}
+.rev img{width:100%;display:block}
+.rev-hint{text-align:center;font-size:12px;color:var(--ink-3);margin-top:-4px}
+
+/* ============ PRICING ============ */
+.plans{display:grid;gap:16px}
+.plan{background:var(--white);border-radius:var(--r-lg);padding:26px 20px;box-shadow:var(--sh-2);position:relative;display:flex;flex-direction:column}
+.plan.best{background:var(--graphite);color:#EDE9E3;box-shadow:var(--sh-3)}
+.plan-tag{
+  position:absolute;top:-11px;left:20px;background:var(--coral);color:#fff;
+  border-radius:var(--r-pill);padding:6px 14px;font-size:10px;font-weight:800;
+  letter-spacing:.14em;text-transform:uppercase;
+}
+.plan h3{font-family:"Oswald",sans-serif;text-transform:uppercase;font-size:25px;font-weight:700;margin:6px 0 4px;letter-spacing:.02em}
+.plan .lvl{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sand);margin-bottom:16px}
+.plan.best .lvl{color:var(--sand-2)}
+.plan ul{list-style:none;padding:0;margin:0 0 20px;display:flex;flex-direction:column;gap:9px}
+.plan li{font-size:14px;padding-left:24px;position:relative;line-height:1.45;color:var(--ink-2)}
+.plan.best li{color:#B8B2A9}
+.plan li::before{content:"✓";position:absolute;left:0;top:0;color:var(--ok);font-weight:800}
+.plan.best li::before{color:var(--sand-2)}
+.price{display:flex;align-items:baseline;gap:10px;margin:auto 0 16px}
+.price .now{font-family:"Oswald",sans-serif;font-size:44px;font-weight:700;line-height:1;color:var(--graphite)}
+.plan.best .price .now{color:#fff}
+.price .old{font-size:17px;color:var(--ink-3);text-decoration:line-through;font-weight:700}
+.price .per{font-size:12px;color:var(--ink-3);font-weight:700}
+.plan-gift{background:var(--sand-4);border-radius:14px;padding:12px 14px;font-size:13px;color:#7A5E45;margin-bottom:16px;line-height:1.45}
+.plan.best .plan-gift{background:#3A362F;color:var(--sand-2)}
+
+/* ============ FAQ ============ */
+.faq{display:flex;flex-direction:column;gap:10px}
+.fq{border:1.5px dashed var(--line-2);border-radius:18px;background:transparent;overflow:hidden}
+.fq-h{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;background:none;border:0;padding:18px 18px;cursor:pointer;text-align:left;font-family:"Manrope",sans-serif;font-size:15px;font-weight:800;color:var(--ink);line-height:1.35}
+.fq-ic{width:26px;height:26px;flex:0 0 auto;border-radius:50%;background:var(--coral);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;transition:transform .3s ease;line-height:1}
+.fq-h[aria-expanded="true"] .fq-ic{transform:rotate(45deg);background:var(--graphite)}
+.fq-b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s ease}
+.fq-h[aria-expanded="true"]+.fq-b{grid-template-rows:1fr}
+.fq-b>div{overflow:hidden}
+.fq-in{padding:0 18px 18px;font-size:14.5px;color:var(--ink-2);line-height:1.6;border-top:1px dashed var(--line-2);margin-top:2px;padding-top:14px}
+
+/* ============ CTA ============ */
+.cta-final{background:linear-gradient(165deg,var(--sand-2),var(--sand));color:#fff;border-radius:var(--r-lg);padding:34px 22px;text-align:center;position:relative;overflow:hidden}
+.cta-final::after{content:"";position:absolute;width:230px;height:230px;border:1.5px solid rgba(255,255,255,.28);border-radius:50%;right:-90px;top:-70px}
+.cta-final .d2{color:#fff;position:relative}
+.cta-final p{color:rgba(255,255,255,.9);position:relative;max-width:34ch;margin:14px auto 22px}
+.cta-final .btn{position:relative}
+
+/* sticky bar */
+.sticky{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;
+  background:rgba(35,33,32,.96);backdrop-filter:blur(12px);
+  padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  display:flex;align-items:center;gap:12px;
+  transform:translateY(120%);transition:transform .35s cubic-bezier(.2,.7,.3,1);
+}
+.sticky.on{transform:translateY(0)}
+.sticky .sp{flex:1;min-width:0}
+.sticky .sp b{display:block;color:#fff;font-family:"Oswald",sans-serif;font-size:19px;line-height:1}
+.sticky .sp span{font-size:11px;color:#8E877C;display:block;margin-top:3px}
+.sticky .btn{padding:14px 18px;font-size:11px}
+
+footer{background:var(--graphite);color:#7C756A;padding:34px 0 26px;font-size:13px;text-align:center}
+footer a{color:var(--sand-2);text-decoration:none}
+footer .fl{display:flex;justify-content:center;gap:18px;margin-bottom:14px;flex-wrap:wrap}
+footer img{width:34px;margin:0 auto 14px;opacity:.5;filter:invert(1)}
+
+/* ============ DESKTOP ============ */
+@media (min-width:760px){
+  :root{--pad:34px}
+  section{padding:88px 0}
+  body{font-size:17px}
+  nav.desk{display:flex;gap:26px;align-items:center}
+  nav.desk a{color:var(--ink-2);text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.03em}
+  nav.desk a:hover{color:var(--sand)}
+  .hero{padding:44px 0 0}
+  .hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:38px;align-items:center}
+  .hero-art{margin:0}
+  .phone{width:250px}
+  .hero-cta{flex-direction:row}
+  .hero-strip{justify-content:flex-start}
+  .grid-2{grid-template-columns:1fr 1fr}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .quotes{grid-template-columns:1fr 1fr}
+  .who-list{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .shots{grid-template-columns:1fr 1fr}
+  .feat{grid-template-columns:1fr 1fr}
+  .vids{grid-template-columns:repeat(3,1fr)}
+  .plans{grid-template-columns:repeat(3,1fr);align-items:stretch}
+  .b-cols{grid-template-columns:repeat(3,1fr)}
+  .rev{flex:0 0 340px}
+  .sticky{display:none}
+  .anat{padding:34px}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+  .stat-ring{padding:28px}
+  .ring,.ring svg{width:130px;height:130px}
+  .ring .val{font-size:34px}
+}
+@media (min-width:1060px){
+  .d1{font-size:82px}
+  .shots{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd">
+    <a class="brand" href="#top">
+      <img src="assets/logo.png" alt="">
+      <span>Stellas Deutsch</span>
+    </a>
+    <nav class="desk">
+      <a href="#theory">Теория</a>
+      <a href="#builder">Конструктор</a>
+      <a href="#quiz">Тест</a>
+      <a href="#platform">Платформа</a>
+      <a href="#price">Цена</a>
+    </nav>
+    <a class="btn btn-coral" href="#price">Забрать</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-in">
+      <div>
+        <div class="hero-badges">
+          <span class="chip"><b>A0</b>—<b>C1</b> все уровни</span>
+          <span class="chip"><b>340+</b> гайдов</span>
+          <span class="chip">Вена · Telegram</span>
+        </div>
+        <h1 class="d1">Немецкий<br>можно<br><span class="tan">не зубрить</span></h1>
+        <p class="lead">Половину незнакомых слов в немецком не надо учить. Их надо уметь <strong>разобрать на детали</strong>. Сегодня разбираем приставки и суффиксы — механизм, который превращает 500 знакомых корней в три тысячи понятных слов.</p>
+        <div class="hero-cta">
+          <a class="btn btn-coral" href="#theory">Разобраться за 12 минут</a>
+          <a class="btn btn-ghost" href="#price">Платформа — от 20 €</a>
+        </div>
+        <p class="hero-note"><span aria-hidden="true">🌚</span><span>Бесплатно, без регистрации и смс. Правда.</span></p>
+      </div>
+      <div class="hero-art">
+        <img class="hero-bird" src="assets/logo.png" alt="">
+        <div class="phone">
+          <video src="assets/video/grammar.mp4" autoplay muted loop playsinline poster="assets/platform/p3-guide.jpg"></video>
+        </div>
+      </div>
+    </div>
+    <div class="hero-strip">
+      <div class="oval"><div class="n" data-count="340" data-suffix="+">0</div><div class="l">гайдов</div></div>
+      <div class="oval"><div class="n" data-count="7500" data-suffix="+">0</div><div class="l">слов с озвучкой</div></div>
+      <div class="oval"><div class="n" data-count="100" data-suffix="+">0</div><div class="l">студентов</div></div>
+      <div class="oval"><div class="n">∞</div><div class="l">доступ навсегда</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-in">
+    <span>un· <b>miss·</b> ur· ge· ·lich ·ig <b>·bar</b> ·sam ·los ·heit <b>·keit</b> ·ung ·schaft ·chen ·er ·nis <b>·tum</b> ·haft ·mäßig</span>
+    <span>un· <b>miss·</b> ur· ge· ·lich ·ig <b>·bar</b> ·sam ·los ·heit <b>·keit</b> ·ung ·schaft ·chen ·er ·nis <b>·tum</b> ·haft ·mäßig</span>
+  </div>
+</div>
+
+<!-- ================= PAIN ================= -->
+<section class="sec-dark">
+  <div class="wrap">
+    <p class="eyebrow rv">Сначала про больное</p>
+    <h2 class="d2 wht rv">Дело не в том,<br>что вы <span class="tan">неспособный</span></h2>
+    <p class="lead rv" style="max-width:52ch;margin-top:16px">Я живу в Вене. И каждый день читаю одно и то же — в чатах, в комментариях, в личке. Не от лентяев. От людей, которые пашут в три смены, тащат детей и всё равно садятся за учебник.</p>
+
+    <div class="quotes rv" style="margin:26px 0">
+      <div class="quote"><p>«Я почти всё понимаю, что говорят. А когда пытаюсь сказать — в голове каша».</p><span class="who">из комментариев</span></div>
+      <div class="quote"><p>«Зная кучу слов, перевод выходит как Wörter Salat. А в обратную сторону вообще фиг построишь».</p><span class="who">из комментариев</span></div>
+      <div class="quote"><p>«Артикли. Мой личный ужасный ужас».</p><span class="who">из комментариев</span></div>
+      <div class="quote"><p>«Есть и литература, и интернет. Нет только плана реализации».</p><span class="who">из комментариев</span></div>
+    </div>
+
+    <p class="hit wht rv">Знаете, что общего у всех четверых?</p>
+    <p class="lead rv">Никто из них не учил язык как <strong>систему</strong>. Все учили его как список. Список слов, список правил, список исключений. А список — это память. Память кончается ровно в тот момент, когда вы устали, испугались или вас перебили.</p>
+    <p class="hit wht rv" style="margin-top:22px">Система не кончается.</p>
+    <p class="lead rv">Немецкий — язык, который собирается из деталей, как мебель. Detали конечны. Их можно пересчитать. И вот с этого места уже интересно.</p>
+  </div>
+</section>
+
+<!-- ================= ANATOMY ================= -->
+<section id="theory">
+  <div class="wrap">
+    <p class="eyebrow rv">01 · Анатомия</p>
+    <h2 class="d2 rv">Из чего<br>сделано <span class="tan">слово</span></h2>
+    <p class="lead rv" style="max-width:46ch;margin-top:14px">Возьмём слово, от которого новичка обычно потряхивает. <span class="de">die Unfreundlichkeit</span>. Двадцать букв. Выглядит как приговор.</p>
+    <p class="lead rv">А теперь смотрите.</p>
+
+    <div class="anat rv" style="margin-top:20px">
+      <div class="anat-word">
+        <div class="morph m-pre">un<small>приставка</small></div>
+        <div class="morph m-root">freund<small>корень</small></div>
+        <div class="morph m-suf">lich<small>суффикс</small></div>
+        <div class="morph m-suf">keit<small>суффикс</small></div>
+      </div>
+      <div class="anat-res">
+        <span class="de">die Unfreundlichkeit</span>
+        <p><b>Freund</b> — друг (знаете с A1) · <b>-lich</b> — делает прилагательное: дружелюбный · <b>un-</b> — переворачивает в минус: недружелюбный · <b>-keit</b> — делает существительное женского рода: <strong>недружелюбность</strong>.</p>
+      </div>
+    </div>
+
+    <p class="hit rv" style="margin-top:26px">Вы не учили это слово. Вы его прочитали.</p>
+    <p class="lead rv">Ровно так же собираются десятки тысяч немецких слов. Не сотни — десятки тысяч. И деталей, из которых их собирают, до неприличия мало.</p>
+
+    <div class="grid grid-2 rv" style="margin-top:24px">
+      <div class="card">
+        <h3>Четыре способа собрать слово</h3>
+        <p class="lead" style="font-size:15px;margin:0">В немецком их всего четыре, и три из них вы уже интуитивно знаете:</p>
+        <div class="ex" style="margin-top:12px"><span class="a">приставки и суффиксы</span><span class="arw">→</span><span class="b">un·freund·lich</span></div>
+        <div class="ex"><span class="a">сложение слов</span><span class="arw">→</span><span class="b">Tomaten·suppe</span></div>
+        <div class="ex"><span class="a">смена части речи</span><span class="arw">→</span><span class="b">essen → das Essen</span></div>
+        <div class="ex"><span class="a">сокращения</span><span class="arw">→</span><span class="b">Uni, Abi, LKW</span></div>
+      </div>
+      <div class="card">
+        <h3>Почему это важнее, чем кажется</h3>
+        <p class="lead" style="font-size:15px">Суффикс — это не украшение. Суффикс сообщает вам <strong>три вещи сразу</strong>: часть речи, род существительного и примерное значение.</p>
+        <p class="lead" style="font-size:15px;margin:0">То есть тот самый «ужасный ужас» с артиклями во многих случаях решается не памятью, а концом слова. Всё, что оканчивается на <span class="de">-heit, -keit, -ung, -schaft</span> — всегда <strong>die</strong>. Без исключений, которые вам стоило бы запоминать сегодня.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROGRESS / MATH ================= -->
+<section class="sec-paper2">
+  <div class="wrap">
+    <p class="eyebrow rv">02 · Математика</p>
+    <h2 class="d2 rv">Считаем,<br>сколько это <span class="tan">даёт</span></h2>
+    <p class="lead rv" style="max-width:44ch;margin-top:14px">Я не люблю красивые обещания, поэтому давайте просто арифметику.</p>
+
+    <div class="split" style="margin-top:24px">
+      <div class="stat-ring rv">
+        <div class="ring" data-ring="86">
+          <svg viewBox="0 0 104 104" aria-hidden="true">
+            <circle class="bg" cx="52" cy="52" r="47"></circle>
+            <circle class="fg" cx="52" cy="52" r="47"></circle>
+          </svg>
+          <div class="val" data-count="86" data-suffix="%">0%</div>
+        </div>
+        <p><b>Столько длинных слов читается по частям</b>Если вы знаете 20 суффиксов и 10 приставок, подавляющее большинство «страшных» немецких слов перестают быть незнакомыми. Вы их не переводите — вы их разбираете.</p>
+      </div>
+
+      <div class="bars rv">
+        <div class="bar-row">
+          <div class="bt"><b>500 корней</b><span>база A2</span></div>
+          <div class="track"><i class="fill f1" data-fill="18"></i></div>
+        </div>
+        <div class="bar-row">
+          <div class="bt"><b>+ 11 суффиксов прилагательных</b><span>≈ 1 400 форм</span></div>
+          <div class="track"><i class="fill f2" data-fill="42"></i></div>
+        </div>
+        <div class="bar-row">
+          <div class="bt"><b>+ 12 суффиксов существительных</b><span>≈ 2 600 форм</span></div>
+          <div class="track"><i class="fill f3" data-fill="72"></i></div>
+        </div>
+        <div class="bar-row">
+          <div class="bt"><b>+ приставки и Komposita</b><span>≈ 3 000+</span></div>
+          <div class="track"><i class="fill f4" data-fill="96"></i></div>
+        </div>
+        <p style="font-size:13px;color:var(--ink-3);margin:4px 0 0;line-height:1.5">Прикидка по продуктивным моделям словообразования: одна основа даёт в среднем 4–6 живых производных.</p>
+      </div>
+    </div>
+
+    <p class="hit rv" style="margin-top:26px">Один вечер на схему. И словарь перестаёт расти линейно.</p>
+    <p class="lead rv">Это, собственно, единственная причина, по которой я вообще сел писать этот разбор.</p>
+  </div>
+</section>
+
+<!-- ================= AFFIX REFERENCE ================= -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow rv">03 · Справочник</p>
+    <h2 class="d2 rv">Все детали<br>на <span class="tan">одной странице</span></h2>
+    <p class="lead rv" style="max-width:46ch;margin-top:14px">Жмите на любую — внутри примеры с переводом. Не пытайтесь выучить всё за раз, это бессмысленно. Прочитайте, поймайте логику, возвращайтесь.</p>
+
+    <div class="tabs rv" role="tablist" aria-label="Разделы справочника" style="margin-top:20px">
+      <button class="tab" role="tab" aria-selected="true" data-panel="p-adj">Прилагательные</button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="p-neg">Отрицание</button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="p-noun">Существительные</button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="p-npre">Приставки сущ.</button>
+    </div>
+
+    <div class="afx rv" id="p-adj" role="tabpanel"></div>
+    <div class="afx rv" id="p-neg" role="tabpanel" hidden></div>
+    <div class="afx rv" id="p-noun" role="tabpanel" hidden></div>
+    <div class="afx rv" id="p-npre" role="tabpanel" hidden></div>
+  </div>
+</section>
+
+<!-- ================= BUILDER ================= -->
+<section id="builder" class="sec-dark">
+  <div class="wrap">
+    <p class="eyebrow rv">04 · Практика</p>
+    <h2 class="d2 wht rv">Соберите<br>слово <span class="tan">сами</span></h2>
+    <p class="lead rv" style="max-width:46ch;margin-top:14px">Выберите приставку, корень и суффикс. Некоторые комбинации не существуют — так и должно быть, и это тоже полезно увидеть своими глазами.</p>
+
+    <div class="builder rv" style="margin-top:22px">
+      <div class="b-cols">
+        <div class="b-col"><label>Приставка</label><div class="b-chips" id="c-pre"></div></div>
+        <div class="b-col"><label>Корень</label><div class="b-chips" id="c-root"></div></div>
+        <div class="b-col"><label>Суффикс</label><div class="b-chips" id="c-suf"></div></div>
+      </div>
+      <div class="b-out" id="b-out" aria-live="polite">
+        <div class="b-word">…</div>
+        <div class="b-ru">Выберите детали сверху</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KOMPOSITA ================= -->
+<section class="sec-sand">
+  <div class="wrap">
+    <p class="eyebrow dark rv">05 · Komposita</p>
+    <h2 class="d2 rv">Длинные слова —<br>это <span class="tan">простые слова</span></h2>
+    <p class="lead rv" style="max-width:46ch;margin-top:14px">Сложные существительные пугают только на вид. Правило ровно одно, и оно спасает вам артикль.</p>
+
+    <div class="komp rv" style="margin-top:20px">
+      <div class="komp-row">
+        <div class="kw">die Reise<small>поездка</small></div>
+        <span class="kplus">+</span>
+        <div class="kw win">der Führer<small>ведущий · главное слово</small></div>
+      </div>
+      <p class="komp-note"><b>= der Reiseführer</b> — путеводитель. Род, множественное число и склонение берутся <b>у последнего слова</b>. Всегда.</p>
+    </div>
+
+    <div class="komp rv" style="margin-top:14px">
+      <div class="komp-row">
+        <div class="kw">die Universität<small>-ät → нужна -s-</small></div>
+        <span class="kplus">+ s +</span>
+        <div class="kw win">die Bibliothek<small>главное слово</small></div>
+      </div>
+      <p class="komp-note"><b>= die Universitätsbibliothek</b>. Соединительная <b>-s-</b> появляется после женских слов на <span class="de">-ät, -heit, -keit, -schaft, -ung</span> и после некоторых мужских вроде <span class="de">Beruf, Unterricht</span>.</p>
+    </div>
+
+    <div class="grid grid-3 rv" style="margin-top:16px">
+      <div class="card"><h3>Два слова</h3><p class="lead" style="font-size:15px;margin:0"><span class="de">die Tomatensuppe</span><br>томатный суп</p></div>
+      <div class="card"><h3>Три слова</h3><p class="lead" style="font-size:15px;margin:0"><span class="de">der Hauptbahnhof</span><br>главный вокзал</p></div>
+      <div class="card"><h3>Четыре слова</h3><p class="lead" style="font-size:15px;margin:0"><span class="de">der Schwarzweißfernseher</span><br>чёрно-белый телевизор</p></div>
+    </div>
+
+    <p class="hit rv" style="margin-top:24px">Читайте такие слова с конца. Немцы, кстати, делают так же.</p>
+  </div>
+</section>
+
+<!-- ================= QUIZ ================= -->
+<section id="quiz">
+  <div class="wrap">
+    <p class="eyebrow rv">06 · Проверка</p>
+    <h2 class="d2 rv">Шесть вопросов,<br><span class="tan">две минуты</span></h2>
+    <p class="lead rv" style="max-width:44ch;margin-top:14px">Если наберёте меньше четырёх — это не приговор, а просто повод перечитать блок 03. Знание ≠ навык, помните.</p>
+
+    <div class="quiz rv" id="quiz" style="margin-top:20px">
+      <div class="q-top">
+        <span class="q-count" id="q-count">Вопрос 1 из 6</span>
+        <span class="q-score" id="q-score">0 / 6</span>
+      </div>
+      <div class="q-track"><i id="q-bar"></i></div>
+      <p class="q-text" id="q-text">…</p>
+      <div class="q-opts" id="q-opts"></div>
+      <p class="q-fb" id="q-fb"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BRIDGE TO PRODUCT ================= -->
+<section class="sec-dark">
+  <div class="wrap">
+    <p class="eyebrow rv">Честно про то, что дальше</p>
+    <h2 class="d2 wht rv">Одна тема —<br>это <span class="tan">одна тема</span></h2>
+    <p class="lead rv" style="max-width:50ch;margin-top:16px">Вы дочитали разбор словообразования. Стало понятнее. Но давайте без иллюзий: от одного понятного объяснения немецкий не появляется.</p>
+    <p class="lead rv" style="max-width:50ch">Появляется он от того, что таких понятных объяснений у вас <strong>триста сорок</strong>, они разложены по уровням, к каждому есть видео и упражнение, а рядом лежат слова с озвучкой и трекер, который не даёт слиться на второй неделе.</p>
+    <p class="hit wht rv" style="margin-top:22px">Проблема почти никогда не в отсутствии информации.</p>
+    <p class="lead rv" style="max-width:50ch">Информации в интернете завались. Проблема — что она размазана по сорока сайтам, ютюбу и трём тетрадкам, и у вас нет плана. Вот это мы и собрали.</p>
+  </div>
+</section>
+
+<!-- ================= PLATFORM ================= -->
+<section id="platform" class="sec-paper2">
+  <div class="wrap">
+    <p class="eyebrow rv">07 · Платформа</p>
+    <h2 class="d2 rv">Stellas Deutsch<br><span class="tan">A0 → C1</span></h2>
+    <p class="lead rv" style="max-width:46ch;margin-top:14px">Это не курс с созвонами в неудобное время и домашками «чтобы было». Это база знаний в Notion, которую вы открываете тогда, когда у вас есть силы. В том числе офлайн, в метро, в ночную смену.</p>
+
+    <div class="shots rv" style="margin-top:24px">
+      <div class="shot">
+        <img src="assets/platform/p1-home.jpg" alt="Главная страница платформы Stellas в Notion: навигация, таймер, заметки и подборки ресурсов" loading="lazy">
+        <div class="cap"><b>Одна точка входа</b><span>Грамматика, лексика, план, ресурсы по уровням. Не сорок вкладок, а одна страница, с которой всё видно.</span></div>
+      </div>
+      <div class="shot">
+        <img src="assets/platform/p3-guide.jpg" alt="Раздел грамматики: местоимения, существительные и артикли, таблицы склонения" loading="lazy">
+        <div class="cap"><b>340+ гайдов по грамматике</b><span>В каждом — объяснение темы, видео, упражнение и разбор ответов. Ровно как разбор выше, только их триста сорок.</span></div>
+      </div>
+      <div class="shot">
+        <img src="assets/platform/p4-words.jpg" alt="Карточки слов с озвучкой: die Wohnung, die Miete, die Kaltmiete" loading="lazy">
+        <div class="cap"><b>7 500+ слов с озвучкой</b><span>Не список в столбик. Карточки с транскрипцией и кнопкой «hören» — чтобы слово заходило на слух, а не только глазами.</span></div>
+      </div>
+      <div class="shot">
+        <img src="assets/platform/p8-situations.jpg" alt="Лексика по жизненным ситуациям" loading="lazy">
+        <div class="cap"><b>Лексика по ситуациям</b><span>Врач, Amt, квартира, работа, магазин. Эти гайды выросли из разговорных клубов, где мы готовили людей к конкретному походу к конкретному врачу.</span></div>
+      </div>
+      <div class="shot">
+        <img src="assets/platform/p6-tracker.jpg" alt="Трекер привычек со стриками: чтение, слушание, разговорная практика, письмо" loading="lazy">
+        <div class="cap"><b>Трекер, который не даёт слиться</b><span>Чтение, слушание, речь, письмо — четыре полосы и стрик. Тот самый «план реализации», которого не хватало.</span></div>
+      </div>
+      <div class="shot">
+        <img src="assets/platform/p5-builder.jpg" alt="Конструктор и упражнения платформы" loading="lazy">
+        <div class="cap"><b>Флеш-карты, диалоги, экзамены</b><span>Упражнения с ответами и пояснением. Пробные экзамены — чтобы формат не встретился вам впервые в день сдачи.</span></div>
+      </div>
+    </div>
+
+    <h3 class="d4 rv" style="margin:34px 0 16px">Что это решает по пунктам</h3>
+    <div class="feat rv">
+      <div class="feat-item"><div class="feat-ic">1</div><div><b>«Работаю в три смены, курсы не вариант»</b><span>Notion ставится приложением на телефон и ноут и работает офлайн. Пятнадцать минут в транспорте — это уже занятие.</span></div></div>
+      <div class="feat-item"><div class="feat-ic">2</div><div><b>«Курсы слишком быстрые, я не успеваю»</b><span>Доступ навсегда. Один платёж. Можно вернуться к теме через год и перечитать десять раз — никто не заберёт.</span></div></div>
+      <div class="feat-item"><div class="feat-ic">3</div><div><b>«Боюсь говорить»</b><span>Диалоги и озвучка на каждое слово. Сначала вы слышите и повторяете в одиночестве — там, где вас никто не оценит.</span></div></div>
+      <div class="feat-item"><div class="feat-ic">4</div><div><b>«Нет плана»</b><span>Материал разложен по уровням от A0 до C1. Видно, где вы, что закрыто и что дальше.</span></div></div>
+      <div class="feat-item"><div class="feat-ic">5</div><div><b>«Слабый преподаватель на интеграционном курсе»</b><span>Платформа не заменяет курс, а закрывает его дыры. Не поняли тему на занятии — открыли гайд и разобрали спокойно.</span></div></div>
+      <div class="feat-item"><div class="feat-ic">6</div><div><b>«Я не способен к языкам»</b><span>Половина того, что зовут способностями — это системность подачи. Разбор выше вы поняли. Значит, способны.</span></div></div>
+    </div>
+
+    <div class="vids rv" style="margin-top:26px">
+      <div class="vid"><video src="assets/video/grammar.mp4" muted loop playsinline preload="metadata" controls></video><div class="vc">Гайд по грамматике внутри</div></div>
+      <div class="vid"><video src="assets/video/topic.mp4" muted loop playsinline preload="metadata" controls></video><div class="vc">Разбор темы</div></div>
+      <div class="vid"><video src="assets/video/shop.mp4" muted loop playsinline preload="metadata" controls></video><div class="vc">Лексика по ситуации</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow rv">08 · Отзывы</p>
+    <h2 class="d2 rv">Скриншоты,<br>а не <span class="tan">пересказ</span></h2>
+    <p class="lead rv" style="max-width:44ch;margin-top:14px">Не буду цитировать выборочно и красиво. Вот как есть, из личных сообщений.</p>
+  </div>
+  <div class="wrap">
+    <div class="revs rv" style="margin-top:20px">
+      <div class="rev"><img src="assets/reviews/r1.jpg" alt="Отзыв в Telegram о структуре уроков платформы" loading="lazy"></div>
+      <div class="rev"><img src="assets/reviews/r2.jpg" alt="Отзыв о платформе" loading="lazy"></div>
+      <div class="rev"><img src="assets/reviews/r3.jpg" alt="Отзыв о платформе" loading="lazy"></div>
+      <div class="rev"><img src="assets/reviews/r4.jpg" alt="Отзыв о платформе" loading="lazy"></div>
+      <div class="rev"><img src="assets/reviews/r5.jpg" alt="Отзыв о платформе" loading="lazy"></div>
+      <div class="rev"><img src="assets/reviews/r6.jpg" alt="Отзыв о платформе" loading="lazy"></div>
+      <div class="rev"><img src="assets/reviews/r7-cert.jpg" alt="Сертификат студента" loading="lazy"></div>
+    </div>
+    <p class="rev-hint">← листайте →</p>
+  </div>
+</section>
+
+<!-- ================= PRICE ================= -->
+<section id="price" class="sec-sand">
+  <div class="wrap">
+    <p class="eyebrow dark rv">09 · Тарифы</p>
+    <h2 class="d2 rv">Цена, которую<br>не надо <span class="tan">обдумывать</span></h2>
+    <p class="lead rv" style="max-width:46ch;margin-top:14px">Мы сознательно не делаем продукт за 500 евро с рассрочкой от банка. Тут нет обратной связи — поэтому и цена такая. Это честный размен, а не аттракцион щедрости.</p>
+
+    <div class="plans rv" style="margin-top:28px">
+      <div class="plan">
+        <h3>Старт</h3>
+        <div class="lvl">A0 · A1 · A2</div>
+        <ul>
+          <li>Гайды по грамматике с видео и упражнениями</li>
+          <li>Лексика по бытовым ситуациям</li>
+          <li>Слова с озвучкой и транскрипцией</li>
+          <li>Трекер, флеш-карты, диалоги</li>
+          <li>Фильмы, книги, подкасты по уровню</li>
+        </ul>
+        <div class="plan-gift">🇺🇦 Версия A0–A2 на украинском языке — в подарок</div>
+        <div class="price"><span class="now">20 €</span><span class="per">один раз</span></div>
+        <a class="btn btn-dark btn-wide" href="https://t.me/stellas_deutsch" target="_blank" rel="noopener">Забрать старт</a>
+      </div>
+
+      <div class="plan best">
+        <span class="plan-tag">Выгоднее на 10 €</span>
+        <h3>Полный</h3>
+        <div class="lvl">A0 → C1</div>
+        <ul>
+          <li>Обе платформы целиком, все 340+ гайдов</li>
+          <li>7 500+ слов с озвучкой и транскрипцией</li>
+          <li>Экзамены, диалоги, упражнения с разбором</li>
+          <li>Умный трекер в Notion + флеш-карты</li>
+          <li>Украинская версия A0–A2 в подарок</li>
+          <li>Доступ навсегда, обновления включены</li>
+        </ul>
+        <div class="plan-gift">Дешевле, чем один урок с репетитором в Вене. И остаётся с вами навсегда.</div>
+        <div class="price"><span class="now">30 €</span><span class="old">40 €</span></div>
+        <a class="btn btn-coral btn-wide" href="https://t.me/stellas_deutsch" target="_blank" rel="noopener">Забрать всё</a>
+      </div>
+
+      <div class="plan">
+        <h3>Продолжение</h3>
+        <div class="lvl">B1 · B2 · C1</div>
+        <ul>
+          <li>Грамматика уровней B1–C1 с видео</li>
+          <li>Продвинутая лексика и разговорные фразы</li>
+          <li>Материалы для подготовки к экзаменам</li>
+          <li>Фильмы, книги, подкасты по уровню</li>
+          <li>Трекер, флеш-карты, диалоги</li>
+        </ul>
+        <div class="plan-gift">Если у вас уже есть A2 и вы застряли — вам сюда.</div>
+        <div class="price"><span class="now">20 €</span><span class="per">один раз</span></div>
+        <a class="btn btn-dark btn-wide" href="https://t.me/stellas_deutsch" target="_blank" rel="noopener">Забрать продолжение</a>
+      </div>
+    </div>
+
+    <p class="lead rv" style="text-align:center;margin-top:22px;font-size:14.5px">Платите один раз. Доступ не сгорает, подписки нет, продлевать нечего.</p>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow rv">10 · Вопросы</p>
+    <h2 class="d2 rv">Что <span class="tan">спрашивают</span><br>чаще всего</h2>
+    <div class="faq rv" id="faq" style="margin-top:24px"></div>
+  </div>
+</section>
+
+<!-- ================= FINAL ================= -->
+<section class="sec-paper2">
+  <div class="wrap">
+    <div class="cta-final rv">
+      <h2 class="d2">Начните<br>с одного вечера</h2>
+      <p>Откройте платформу, найдите тему, которая бесит вас больше всего, и закройте её сегодня. Завтра — следующую. Это вся стратегия.</p>
+      <a class="btn btn-dark" href="https://t.me/stellas_deutsch" target="_blank" rel="noopener">Написать в Telegram</a>
+    </div>
+    <p class="lead rv" style="text-align:center;margin-top:26px;max-width:40ch;margin-left:auto;margin-right:auto;font-size:15px">Я не обещаю вам B1 за три месяца — так не бывает, и все, кто обещает, вам врут. Обещаю понятные объяснения и систему, в которой не теряешься.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo.png" alt="">
+    <div class="fl">
+      <a href="https://t.me/stellas_deutsch" target="_blank" rel="noopener">Telegram-канал</a>
+      <a href="#platform">Платформа</a>
+      <a href="#price">Тарифы</a>
+    </div>
+    <p style="margin:0">Stellas Deutsch · немецкий A0–C1 · Вена</p>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky">
+  <div class="sp"><b>30 €</b><span>A0–C1, доступ навсегда</span></div>
+  <a class="btn btn-coral" href="#price">Забрать</a>
+</div>
+
+<script>
+document.documentElement.classList.add('js');
+
+/* ---------- REVEAL ---------- */
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in')});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.forEach(function(e){io.observe(e)});
+  // safety net
+  setTimeout(function(){els.forEach(function(e){
+    if(e.getBoundingClientRect().top < window.innerHeight) e.classList.add('in');
+  })},400);
+})();
+
+/* ---------- COUNTERS ---------- */
+(function(){
+  var nodes = document.querySelectorAll('[data-count]');
+  function run(el){
+    var target = parseFloat(el.dataset.count), sfx = el.dataset.suffix || '';
+    var dur = 1400, t0 = performance.now();
+    function step(t){
+      var p = Math.min((t-t0)/dur,1);
+      var e = 1-Math.pow(1-p,3);
+      el.textContent = Math.round(target*e).toLocaleString('ru-RU') + sfx;
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if(!('IntersectionObserver' in window)){ nodes.forEach(run); return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ run(e.target); io.unobserve(e.target); } });
+  },{threshold:.4});
+  nodes.forEach(function(n){io.observe(n)});
+})();
+
+/* ---------- RING + BARS ---------- */
+(function(){
+  var C = 2*Math.PI*47;
+  function ring(el){
+    var pct = parseFloat(el.dataset.ring)/100;
+    var fg = el.querySelector('.fg');
+    fg.style.strokeDasharray = C;
+    fg.style.strokeDashoffset = C;
+    requestAnimationFrame(function(){ fg.style.strokeDashoffset = C*(1-pct); });
+  }
+  function bar(el){ el.style.width = el.dataset.fill + '%'; }
+  var targets = [].slice.call(document.querySelectorAll('[data-ring],[data-fill]'));
+  if(!('IntersectionObserver' in window)){
+    targets.forEach(function(t){ t.dataset.ring ? ring(t) : bar(t); });
+    return;
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.dataset.ring ? ring(e.target) : bar(e.target);
+      io.unobserve(e.target);
+    });
+  },{threshold:.3});
+  targets.forEach(function(t){io.observe(t)});
+})();
+
+/* ---------- AFFIX DATA ---------- */
+var AFFIX = {
+  'p-adj':[
+    {k:'-lich',m:'качество, свойство · делает прилагательное',cls:'',ex:[['der Tag','täglich','день → ежедневный'],['bedrohen','bedrohlich','угрожать → угрожающий'],['der Freund','freundlich','друг → дружелюбный']]},
+    {k:'-ig',m:'обладание признаком',cls:'',ex:[['der Stein','steinig','камень → каменистый'],['die Seide','seidig','шёлк → шелковистый'],['der Durst','durstig','жажда → испытывающий жажду']]},
+    {k:'-isch',m:'принадлежность, происхождение, характеристика',cls:'',ex:[['Franzose','französisch','француз → французский'],['angeben','angeberisch','хвастать → хвастливый']]},
+    {k:'-bar',m:'возможность: «то, что можно сделать»',cls:'',ex:[['essen','essbar','есть → съедобный'],['trinken','trinkbar','пить → пригодный для питья'],['erkennen','erkennbar','узнавать → узнаваемый'],['vorstellen','vorstellbar','представлять → мыслимый']]},
+    {k:'-sam',m:'склонность, обладание свойством',cls:'',ex:[['die Mühe','mühsam','усилие → трудоёмкий'],['sparen','sparsam','экономить → экономный']]},
+    {k:'-haft',m:'наличие свойства или сходство',cls:'',ex:[['der Schmerz','schmerzhaft','боль → болезненный'],['der Name','namhaft','имя → именитый, известный']]},
+    {k:'-los',m:'отсутствие: русское «без-» и «бес-»',cls:'',ex:[['die Arbeit','arbeitslos','работа → безработный'],['leben','leblos','жить → безжизненный'],['zahlen','zahllos','считать → бесчисленный']]},
+    {k:'-mäßig · -gemäß',m:'«согласно чему-то», соответствие',cls:'',ex:[['die Zeit','zeitgemäß','время → современный'],['das Recht','rechtmäßig','право → правомерный']]},
+    {k:'-abel',m:'возможность · только у заимствований',cls:'',ex:[['variieren','variabel','варьировать → вариабельный'],['spenden','spendabel','жертвовать → щедрый']]},
+    {k:'-al · -ell · -iell',m:'заимствованные прилагательные',cls:'',ex:[['die Region','regional','регион → региональный'],['die Form','formell','форма → формальный'],['die Potenz','potenziell','способность → потенциальный']]},
+    {k:'-iv · -ös',m:'заимствованные прилагательные',cls:'',ex:[['der Impuls','impulsiv','импульс → импульсивный'],['der Nerv','nervös','нерв → нервный']]}
+  ],
+  'p-neg':[
+    {k:'un-',m:'самая частая отрицательная приставка',cls:'neg',ex:[['höflich','unhöflich','вежливый → невежливый'],['möglich','unmöglich','возможный → невозможный'],['die Achtsamkeit','die Unachtsamkeit','внимательность → невнимательность']]},
+    {k:'miss-',m:'«не-», «недо-», часто с оттенком неудачи',cls:'neg',ex:[['verständlich','missverständlich','понятный → допускающий недопонимание'],['der Erfolg','der Misserfolg','успех → неудача']]},
+    {k:'in-',m:'с заимствованными основами',cls:'neg',ex:[['stabil','instabil','стабильный → нестабильный'],['direkt','indirekt','прямой → косвенный']]},
+    {k:'ir- · il- · non-',m:'варианты in- перед r, l и в интернационализмах',cls:'neg',ex:[['rational','irrational','рациональный → иррациональный'],['legal','illegal','легальный → нелегальный'],['verbal','nonverbal','вербальный → невербальный']]},
+    {k:'de- · des-',m:'отмена, обратное действие',cls:'neg',ex:[['aktiviert','deaktiviert','активированный → деактивированный'],['interessiert','desinteressiert','заинтересованный → равнодушный']]}
+  ],
+  'p-noun':[
+    {k:'-ung',m:'от глагола → процесс или результат · всегда die',cls:'noun',ex:[['beschreiben','die Beschreibung','описывать → описание'],['wohnen','die Wohnung','жить → квартира'],['üben','die Übung','упражняться → упражнение']]},
+    {k:'-heit',m:'от прилагательного или существительного · всегда die',cls:'noun',ex:[['wahr','die Wahrheit','правдивый → правда'],['das Kind','die Kindheit','ребёнок → детство'],['frei','die Freiheit','свободный → свобода']]},
+    {k:'-keit · -igkeit',m:'то же, но после -lich, -ig, -bar, -los · всегда die',cls:'noun',ex:[['freundlich','die Freundlichkeit','дружелюбный → приветливость'],['arbeitslos','die Arbeitslosigkeit','безработный → безработица']]},
+    {k:'-schaft',m:'общность, состояние · всегда die',cls:'noun',ex:[['der Freund','die Freundschaft','друг → дружба'],['leiden','die Leidenschaft','страдать → страсть']]},
+    {k:'-er · -erin',m:'деятель · der / die',cls:'noun',ex:[['prüfen','der Prüfer / die Prüferin','проверять → экзаменатор'],['lehren','der Lehrer / die Lehrerin','учить → учитель']]},
+    {k:'-(a)tion',m:'заимствованные абстракции · всегда die',cls:'noun',ex:[['organisieren','die Organisation','организовывать → организация'],['informieren','die Information','информировать → информация']]},
+    {k:'-nis',m:'результат, состояние · das (иногда die)',cls:'noun',ex:[['erleben','das Erlebnis','переживать → переживание'],['erkennen','die Erkenntnis','познавать → познание']]},
+    {k:'-t · -e',m:'короткие отглагольные · die',cls:'noun',ex:[['fahren','die Fahrt','ехать → поездка'],['lieben','die Liebe','любить → любовь']]},
+    {k:'-tum',m:'состояние, совокупность · das (der Reichtum, der Irrtum)',cls:'noun',ex:[['wachsen','das Wachstum','расти → рост'],['reich','der Reichtum','богатый → богатство']]},
+    {k:'-ling',m:'носитель признака · всегда der',cls:'noun',ex:[['lieben','der Liebling','любить → любимец'],['lehren','der Lehrling','учить → ученик, подмастерье']]},
+    {k:'-(er)ei',m:'место действия или занятие · die',cls:'noun',ex:[['der Bäcker','die Bäckerei','пекарь → пекарня'],['malen','die Malerei','рисовать → живопись']]},
+    {k:'-chen · -lein',m:'уменьшительные · всегда das, часто с умлаутом',cls:'noun',ex:[['das Brot','das Brötchen','хлеб → булочка'],['das Haus','das Häuschen','дом → домик'],['das Buch','das Büchlein','книга → книжечка']]}
+  ],
+  'p-npre':[
+    {k:'ge-',m:'собирательность и результат · с существительным даёт das + -e',cls:'noun',ex:[['fühlen','das Gefühl','чувствовать → чувство'],['der Berg','das Gebirge','гора → горная цепь']]},
+    {k:'ur-',m:'древность, первоначальность',cls:'noun',ex:[['die Zeit','die Urzeit','время → древность'],['der Großvater','der Urgroßvater','дедушка → прадедушка']]},
+    {k:'erz-',m:'усиление, русское «архи-»',cls:'noun',ex:[['der Engel','der Erzengel','ангел → архангел'],['der Feind','der Erzfeind','враг → заклятый враг']]},
+    {k:'anti-',m:'противопоставление',cls:'noun',ex:[['der Held','der Antiheld','герой → антигерой'],['der Körper','der Antikörper','тело → антитело']]},
+    {k:'neo-',m:'новое, обновлённое',cls:'noun',ex:[['der Klassizismus','der Neoklassizismus','классицизм → неоклассицизм']]},
+    {k:'Инфинитив → das',m:'любой глагол можно превратить в существительное среднего рода',cls:'noun',ex:[['essen','das Essen','есть → еда'],['trinken','das Trinken','пить → питьё'],['leben','das Leben','жить → жизнь']]},
+    {k:'Основа → der',m:'от формы глагола без суффикса — обычно мужской род',cls:'noun',ex:[['besuchen','der Besuch','навещать → визит'],['schlafen','der Schlaf','спать → сон'],['beginnen','der Beginn','начинать → начало']]}
+  ]
+};
+
+(function(){
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  Object.keys(AFFIX).forEach(function(id){
+    var host = document.getElementById(id);
+    host.innerHTML = AFFIX[id].map(function(a,i){
+      var rows = a.ex.map(function(e){
+        return '<div class="ex"><span class="a">'+esc(e[0])+'</span><span class="arw">→</span><span class="b">'+esc(e[1])+'</span><span class="tr">'+esc(e[2])+'</span></div>';
+      }).join('');
+      var uid = id+'-'+i;
+      return '<div class="afx-item '+a.cls+'">'+
+        '<button class="afx-head" aria-expanded="false" aria-controls="'+uid+'">'+
+          '<span class="afx-key">'+esc(a.k)+'</span>'+
+          '<span class="afx-mean">'+esc(a.m)+'</span>'+
+          '<span class="afx-plus" aria-hidden="true">+</span>'+
+        '</button>'+
+        '<div class="afx-body" id="'+uid+'"><div><div class="afx-in">'+rows+'</div></div></div>'+
+      '</div>';
+    }).join('');
+  });
+
+  document.addEventListener('click',function(ev){
+    var h = ev.target.closest('.afx-head');
+    if(!h) return;
+    h.setAttribute('aria-expanded', h.getAttribute('aria-expanded')==='true' ? 'false' : 'true');
+  });
+
+  var tabs = document.querySelectorAll('.tab');
+  tabs.forEach(function(t){
+    t.addEventListener('click',function(){
+      tabs.forEach(function(o){
+        o.setAttribute('aria-selected','false');
+        document.getElementById(o.dataset.panel).hidden = true;
+      });
+      t.setAttribute('aria-selected','true');
+      document.getElementById(t.dataset.panel).hidden = false;
+    });
+  });
+})();
+
+/* ---------- WORD BUILDER ---------- */
+(function(){
+  var PRE  = [{id:'',l:'без'},{id:'un',l:'un-'},{id:'miss',l:'miss-'},{id:'ur',l:'ur-'},{id:'ge',l:'ge-'}];
+  var ROOT = [{id:'freund',l:'freund'},{id:'glück',l:'glück'},{id:'arbeit',l:'arbeit'},{id:'les',l:'les'},{id:'wahr',l:'wahr'},{id:'end',l:'end'},{id:'schmerz',l:'schmerz'},{id:'fühl',l:'fühl'}];
+  var SUF  = [{id:'',l:'без'},{id:'lich',l:'-lich'},{id:'ig',l:'-ig'},{id:'bar',l:'-bar'},{id:'los',l:'-los'},{id:'haft',l:'-haft'},{id:'heit',l:'-heit'},{id:'keit',l:'-keit'},{id:'schaft',l:'-schaft'},{id:'ung',l:'-ung'}];
+
+  var MAP = {
+    '|freund|lich':      ['freundlich','дружелюбный','Прилагательное. -lich превращает существительное в качество.'],
+    'un|freund|lich':    ['unfreundlich','недружелюбный','un- переворачивает знак. Самая продуктивная связка в языке.'],
+    '|freund|schaft':    ['die Freundschaft','дружба','-schaft → всегда die. Общность, отношение, состояние.'],
+    '|freund|keit':      ['die Freundlichkeit','приветливость','Формально -lich + -keit. Именно так и работают длинные слова.'],
+    'un|freund|keit':    ['die Unfreundlichkeit','недружелюбность','Четыре детали, одно слово. То самое из начала страницы.'],
+    '|glück|lich':       ['glücklich','счастливый','Одно из первых слов, которые вы выучили. Теперь видно, из чего оно.'],
+    'un|glück|lich':     ['unglücklich','несчастный','',''],
+    '|glück|':           ['das Glück','счастье, удача','Голый корень тоже слово. Das Glück — среднего рода.'],
+    '|glück|los':        ['glücklos','невезучий','-los = отсутствие. Русское «без-».'],
+    '|arbeit|los':       ['arbeitslos','безработный','Слово, которое вы точно встретите в Amt.'],
+    '|arbeit|keit':      ['die Arbeitslosigkeit','безработица','Через -los + -igkeit. Так собирается почти вся канцелярская лексика.'],
+    '|arbeit|':          ['die Arbeit','работа','',''],
+    '|arbeit|ung':       ['die Arbeitung','—','Так не говорят: у arbeiten уже есть die Arbeit. Язык не любит дубликаты.'],
+    '|les|bar':          ['lesbar','читаемый, разборчивый','-bar = «то, что можно сделать». Самый полезный суффикс для догадок.'],
+    'un|les|bar':        ['unlesbar','нечитаемый','',''],
+    '|les|ung':          ['die Lesung','чтение, лекция','-ung → всегда die. Процесс или его результат.'],
+    '|wahr|heit':        ['die Wahrheit','правда','-heit → всегда die.'],
+    'un|wahr|heit':      ['die Unwahrheit','неправда','',''],
+    '|wahr|':            ['wahr','правдивый, истинный','',''],
+    '|wahr|haft':        ['wahrhaft','истинный, подлинный','-haft = наличие свойства.'],
+    '|end|los':          ['endlos','бесконечный','',''],
+    '|end|lich':         ['endlich','наконец; конечный','Внимание: значение сдвинулось. -lich не всегда предсказуем на 100%.'],
+    '|end|ung':          ['die Endung','окончание','Грамматический термин, который вам понадобится в каждом гайде.'],
+    '|schmerz|haft':     ['schmerzhaft','болезненный','',''],
+    '|schmerz|lich':     ['schmerzlich','мучительный, горестный','Тонкая разница: -haft про физику, -lich про чувство.'],
+    '|schmerz|los':      ['schmerzlos','безболезненный','',''],
+    '|schmerz|':         ['der Schmerz','боль','',''],
+    'ge|fühl|':          ['das Gefühl','чувство','ge- + основа глагола fühlen. Приставка ge- даёт das.'],
+    '|fühl|los':         ['gefühllos','бесчувственный','',''],
+    'miss|fühl|':        ['—','','Так не говорят. miss- любит существительные и глаголы: der Misserfolg, missverstehen.'],
+    'ur|end|':           ['—','','Так не говорят. ur- ставится к существительным: die Urzeit, der Urgroßvater.']
+  };
+
+  var state = {pre:'', root:'freund', suf:'lich'};
+
+  function chips(host, list, key){
+    host.innerHTML = list.map(function(o){
+      return '<button class="b-chip" type="button" data-v="'+o.id+'" aria-pressed="'+(state[key]===o.id)+'">'+o.l+'</button>';
+    }).join('');
+    host.addEventListener('click',function(ev){
+      var b = ev.target.closest('.b-chip'); if(!b) return;
+      state[key] = b.dataset.v;
+      [].forEach.call(host.children,function(c){ c.setAttribute('aria-pressed', String(c.dataset.v===state[key])); });
+      render();
+    });
+  }
+
+  var out = document.getElementById('b-out');
+
+  function render(){
+    var key = state.pre+'|'+state.root+'|'+state.suf;
+    var hit = MAP[key];
+    if(hit && hit[0] !== '—'){
+      var w = hit[0];
+      // highlight morphemes visually
+      var html = w
+        .replace(/^(der |die |das )/, '<span style="opacity:.55;font-size:.7em">$1</span>')
+        .replace(/^(<[^>]+>[^<]*<\/span>)?(Un|un)/, function(m,g1,g2){ return (g1||'')+'<span class="hlc">'+g2+'</span>'; });
+      if(state.suf) html = html.replace(new RegExp('('+state.suf+')(?=[^a-zäöüß]*$)','i'), '<span class="hl">$1</span>');
+      out.classList.remove('b-bad');
+      out.innerHTML = '<div class="b-word">'+html+'</div>'+
+        '<div class="b-ru">'+hit[1]+'</div>'+
+        (hit[2] ? '<p class="b-note">'+hit[2]+'</p>' : '');
+    } else if(hit){
+      out.classList.add('b-bad');
+      out.innerHTML = '<div class="b-word">так не говорят 🌚</div><p class="b-note">'+hit[2]+'</p>';
+    } else {
+      out.classList.add('b-bad');
+      out.innerHTML = '<div class="b-word">такой комбинации нет</div>'+
+        '<p class="b-note">И это нормально. Не каждый корень дружит с каждым аффиксом — сочетаемость надо чувствовать, а чувство берётся из чтения. Попробуйте другую пару.</p>';
+    }
+  }
+
+  chips(document.getElementById('c-pre'), PRE, 'pre');
+  chips(document.getElementById('c-root'), ROOT, 'root');
+  chips(document.getElementById('c-suf'), SUF, 'suf');
+  render();
+})();
+
+/* ---------- QUIZ ---------- */
+(function(){
+  var Q = [
+    {q:'Что означает суффикс <em>-bar</em> в слове <em>essbar</em>?',
+     o:['То, что можно сделать — съедобный','Прошедшее время','Уменьшительное — маленькая еда','Множественное число'],
+     a:0, f:'-bar = возможность. trinkbar — пригодный для питья, erkennbar — узнаваемый. Один из самых полезных суффиксов для догадок.'},
+    {q:'Какой артикль у слова <em>die/der/das Freundlichkeit</em>?',
+     o:['der','das','die','зависит от контекста'],
+     a:2, f:'Всё, что оканчивается на -keit, -heit, -ung, -schaft — женского рода. Это правило без практических исключений.'},
+    {q:'<em>der Reiseführer</em> — почему <em>der</em>, если <em>die Reise</em> женского рода?',
+     o:['Потому что слово длинное','Род берётся у последнего слова — der Führer','Komposita всегда мужского рода','Это исключение'],
+     a:1, f:'Главное слово в Komposita — последнее. Оно задаёт род, множественное число и склонение. Читайте такие слова с конца.'},
+    {q:'Что делает приставка <em>un-</em>?',
+     o:['Усиливает значение','Делает слово более вежливым','Переворачивает значение в минус','Превращает в глагол'],
+     a:2, f:'höflich → unhöflich, möglich → unmöglich. Одна приставка удваивает ваш активный словарь прилагательных.'},
+    {q:'<em>das Häuschen</em> — что здесь сделал суффикс <em>-chen</em>?',
+     o:['Сделал уменьшительное и задал средний род','Сделал множественное число','Сделал прилагательное','Ничего, это корень'],
+     a:0, f:'-chen и -lein дают уменьшительное и ВСЕГДА средний род, даже если исходное слово было мужским: der Tisch → das Tischlein.'},
+    {q:'Откуда взялась <em>-s-</em> в <em>die Universitätsbibliothek</em>?',
+     o:['Это опечатка','Соединительная -s- после слов на -ät, -heit, -keit, -schaft, -ung','Показатель множественного числа','Родительный падеж'],
+     a:1, f:'Это Fugen-s, соединительный элемент. Ставится после женских слов на -ät, -heit, -keit, -schaft, -ung и после Beruf, Unterricht и подобных.'}
+  ];
+  var i = 0, score = 0;
+  var elT = document.getElementById('q-text'), elO = document.getElementById('q-opts'),
+      elC = document.getElementById('q-count'), elS = document.getElementById('q-score'),
+      elF = document.getElementById('q-fb'), elB = document.getElementById('q-bar');
+
+  function draw(){
+    if(i >= Q.length){
+      elC.textContent = 'Готово';
+      elT.innerHTML = score >= 5 ? 'Вы поняли механизм.' : (score >= 3 ? 'База есть, детали доберём.' : 'Перечитайте блок 03 — и вернитесь.');
+      elO.innerHTML = '';
+      elF.innerHTML = score >= 5
+        ? '<b>'+score+' из 6.</b> Именно так и выглядит момент, когда язык перестаёт быть списком и становится системой. Дальше — просто объём: гайды, слова, практика.'
+        : '<b>'+score+' из 6.</b> И это нормально: за один прогон такое не усваивается. Знание ≠ навык. Откройте справочник выше ещё раз, а потом попробуйте снова.';
+      elB.style.width = '100%';
+      return;
+    }
+    var q = Q[i];
+    elC.textContent = 'Вопрос ' + (i+1) + ' из ' + Q.length;
+    elS.textContent = score + ' / ' + Q.length;
+    elB.style.width = (i/Q.length*100) + '%';
+    elT.innerHTML = q.q;
+    elF.textContent = '';
+    elO.innerHTML = q.o.map(function(o,k){ return '<button class="q-opt" data-k="'+k+'">'+o+'</button>'; }).join('');
+  }
+
+  elO.addEventListener('click', function(ev){
+    var b = ev.target.closest('.q-opt'); if(!b || b.disabled) return;
+    var q = Q[i], k = parseInt(b.dataset.k,10);
+    [].forEach.call(elO.children, function(c){
+      c.disabled = true;
+      if(parseInt(c.dataset.k,10) === q.a) c.classList.add('right');
+    });
+    if(k === q.a) score++; else b.classList.add('wrong');
+    elS.textContent = score + ' / ' + Q.length;
+    elF.innerHTML = q.f;
+    setTimeout(function(){ i++; draw(); }, 2100);
+  });
+
+  draw();
+})();
+
+/* ---------- FAQ ---------- */
+(function(){
+  var F = [
+    ['Что именно я получу за 30 евро?',
+     'Обе платформы: A0–A2 и B1–C1. Это 340+ гайдов по грамматике и лексике (в каждом — объяснение, видео, упражнение и разбор ответов), 7 500+ слов с озвучкой и транскрипцией, диалоги, флеш-карты, пробные экзамены, трекер в Notion и подборки фильмов, книг и подкастов, разложенные по уровням. Плюс украинская версия A0–A2 в подарок.'],
+    ['Это заменит мне интеграционный курс?',
+     'Нет, и я не буду это обещать. Курс даёт вам обязательность, расписание и живых людей рядом. Платформа закрывает то, чего на курсе не хватает: возможность разобрать тему спокойно и столько раз, сколько нужно именно вам. Лучше всего они работают вместе.'],
+    ['У меня работа в три смены. Я реально смогу?',
+     'Notion ставится приложением на телефон и ноутбук и работает офлайн. Материал разбит на короткие блоки: один гайд — одна тема. Пятнадцать минут в транспорте — это уже занятие. Не обещаю, что будет легко, обещаю, что не придётся подстраивать жизнь под расписание.'],
+    ['А если я не разберусь в Notion?',
+     'Notion выглядит сложным ровно до первого открытия. Внутри это обычные страницы со ссылками: нажали — открылось. Всё уже собрано и разложено, вам не нужно ничего настраивать. При покупке даю инструкцию по установке.'],
+    ['Доступ на сколько времени?',
+     'Навсегда. Один платёж, без подписки и продлений. Вернётесь через год — всё на месте, включая то, что мы добавили за этот год.'],
+    ['Я уже покупал курсы, и они не сработали. Почему тут иначе?',
+     'Честный ответ: гарантий нет ни у кого, и любой, кто их даёт, вам врёт. Разница в цене риска. Вы рискуете 20–30 евро, а не 500 с рассрочкой. И перед покупкой можете посмотреть, как я объясняю — вся эта страница и есть образец того, что внутри.'],
+    ['Мне 55, я никогда не учил языков. Есть смысл?',
+     'Есть, и словообразование — как раз ваша тема. Оно снимает главную нагрузку — необходимость держать в памяти тысячи не связанных между собой слов. Вместо памяти включается логика, а с логикой у взрослых людей обычно лучше, чем у двадцатилетних.'],
+    ['Как купить?',
+     'Напишите в Telegram — пришлю доступ и инструкцию. Оплата разовая, доступ выдаётся сразу.']
+  ];
+  document.getElementById('faq').innerHTML = F.map(function(f,i){
+    return '<div class="fq">'+
+      '<button class="fq-h" aria-expanded="false" aria-controls="fq'+i+'"><span>'+(i+1)+'. '+f[0]+'</span><span class="fq-ic" aria-hidden="true">+</span></button>'+
+      '<div class="fq-b" id="fq'+i+'"><div><div class="fq-in">'+f[1]+'</div></div></div>'+
+    '</div>';
+  }).join('');
+  document.getElementById('faq').addEventListener('click',function(ev){
+    var h = ev.target.closest('.fq-h'); if(!h) return;
+    h.setAttribute('aria-expanded', h.getAttribute('aria-expanded')==='true' ? 'false' : 'true');
+  });
+})();
+
+/* ---------- STICKY BAR ---------- */
+(function(){
+  var bar = document.getElementById('sticky');
+  var price = document.getElementById('price');
+  window.addEventListener('scroll',function(){
+    var deep = window.scrollY > window.innerHeight * 1.1;
+    var atPrice = price.getBoundingClientRect().top < window.innerHeight && price.getBoundingClientRect().bottom > 0;
+    bar.classList.toggle('on', deep && !atPrice);
+  },{passive:true});
+})();
+
+/* ---------- VIDEO: play on view ---------- */
+(function(){
+  var vids = document.querySelectorAll('.vid video');
+  if(!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting) { e.target.play().catch(function(){}); }
+      else e.target.pause();
+    });
+  },{threshold:.5});
+  vids.forEach(function(v){io.observe(v)});
+})();
+</script>
+</body>
+</html>
